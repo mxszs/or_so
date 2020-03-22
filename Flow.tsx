@@ -13,8 +13,8 @@ class FlowPage extends React.Component {
   }
 
   handleAfterItemSelected = (e) => {
-    console.log(this.editor.page._cfg);
-    // const model = e.item.getModel();
+    const model = e.item.getModel();
+    console.log(model);
   }
 
   render() {
@@ -30,8 +30,7 @@ class FlowPage extends React.Component {
             },
           }}
           data={data}
-          onAfterChange={this.handleAfterItemSelected}
-          onClick={this.handleAfterItemSelected}
+          onNodeClick={this.handleAfterItemSelected}
         />
         {/* <EditorMinimap /> */}
         {/* <RegisterBehaviour name="test" behaviour={(page) => console.log(behaviour)} dependences={['onNodeClick']} /> */}
