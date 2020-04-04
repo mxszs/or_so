@@ -4,6 +4,7 @@ export default defineConfig({
   hash: true,
   title: 'or_so',
   mode: 'site',
+  favicon: 'https://avatars2.githubusercontent.com/u/33783716?s=60&v=4',
   logo: 'https://avatars2.githubusercontent.com/u/33783716?s=60&v=4',
   navs: [null, { title: 'GitHub', path: 'https://github.com/mxszs' }],
   extraBabelPlugins: [
