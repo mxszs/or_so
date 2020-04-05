@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "dumi-lib",
-  "homepage": "https://mxszs.github.io/",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -9,8 +8,7 @@
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "predeploy": "dumi build",
-    "deploy": "gh-pages -d dist"
+    "doc:deploy": "bash ./scripts/deploy_doc.sh"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
