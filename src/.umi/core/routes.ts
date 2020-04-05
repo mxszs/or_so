@@ -3,13 +3,17 @@ import { plugin } from './plugin';
 
 const routes = [
   {
+    "path": "/_demos/index",
+    "component": require('../../myDemo/Graph/index.tsx').default
+  },
+  {
     "path": "/_demos/radio-button",
     "component": require('../../myDemo/Form/RadioButton.tsx').default
   },
   {
     "path": "/",
     "component": (props) => require('react').createElement(require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.0.13@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"title":"Modal","path":"/components/modal","meta":{},"children":[{"path":"/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"title":"介绍","children":[{"path":"/guide","title":"标题内容"}]}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"title":"Modal","path":"/zh-CN/components/modal","meta":{},"children":[{"path":"/zh-CN/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/zh-CN/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"title":"组件","path":"/components"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"title":"组件","path":"/zh-CN/components"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
+      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"title":"单选按钮分组","path":"/components/radio","meta":{"order":1},"children":[]},{"path":"/components/saga","title":"流程图编辑器","meta":{"order":4}},{"title":"Modal","path":"/components/modal","meta":{},"children":[{"path":"/components/modal","title":"测试","meta":{"order":2}}]}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"path":"/guide","title":"标题内容","meta":{}}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"title":"单选按钮分组","path":"/zh-CN/components/radio","meta":{"order":1},"children":[]},{"path":"/zh-CN/components/saga","title":"流程图编辑器","meta":{"order":4}},{"title":"Modal","path":"/zh-CN/components/modal","meta":{},"children":[{"path":"/zh-CN/components/modal","title":"测试","meta":{"order":2}}]}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"path":"/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"path":"/zh-CN/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -54,82 +58,51 @@ const routes = [
         "title": "or_so"
       },
       {
+        "path": "/components/saga",
+        "component": require('../../../docs/components/Saga.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/components/Saga.md",
+          "updatedTime": null,
+          "title": "流程图编辑器",
+          "saga": {
+            "title": "编辑器"
+          },
+          "order": 4,
+          "slugs": [
+            {
+              "depth": 3,
+              "value": "流程图",
+              "heading": "流程图"
+            }
+          ],
+          "nav": {
+            "path": "/components",
+            "title": "组件"
+          }
+        },
+        "title": "流程图编辑器"
+      },
+      {
         "path": "/components/modal",
         "component": require('../../../docs/components/Modal/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/Modal/index.md",
           "updatedTime": 1586015384000,
-          "title": "自定义组件",
+          "title": "测试",
           "nav": {
             "title": "组件",
             "path": "/components"
           },
           "order": 2,
-          "slugs": [
-            {
-              "depth": 3,
-              "value": "自定义组件",
-              "heading": "自定义组件"
-            }
-          ],
+          "slugs": [],
           "group": {
             "path": "/components/modal",
             "title": "Modal"
           }
         },
-        "title": "自定义组件"
-      },
-      {
-        "path": "/components/modal/test",
-        "component": require('../../../docs/components/Modal/test.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/components/Modal/test.md",
-          "updatedTime": 1586015384000,
-          "title": "test",
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "test",
-              "heading": "test"
-            },
-            {
-              "depth": 2,
-              "value": "test1",
-              "heading": "test1"
-            },
-            {
-              "depth": 2,
-              "value": "one",
-              "heading": "one"
-            },
-            {
-              "depth": 2,
-              "value": "Two",
-              "heading": "two"
-            },
-            {
-              "depth": 2,
-              "value": "Three",
-              "heading": "three"
-            },
-            {
-              "depth": 2,
-              "value": "Four",
-              "heading": "four"
-            }
-          ],
-          "nav": {
-            "path": "/components",
-            "title": "组件"
-          },
-          "group": {
-            "path": "/components/modal",
-            "title": "Modal"
-          }
-        },
-        "title": "test"
+        "title": "测试"
       },
       {
         "path": "/components/radio",
@@ -138,25 +111,25 @@ const routes = [
         "meta": {
           "filePath": "docs/components/Radio/index.md",
           "updatedTime": 1586015384000,
-          "title": "自定义组件",
+          "title": "单选按钮分组",
+          "group": {
+            "title": "单选按钮分组",
+            "path": "/components/radio"
+          },
           "order": 1,
           "slugs": [
             {
               "depth": 3,
-              "value": "自定义组件",
-              "heading": "自定义组件"
+              "value": "自定义form组件",
+              "heading": "自定义form组件"
             }
           ],
           "nav": {
             "path": "/components",
             "title": "组件"
-          },
-          "group": {
-            "path": "/components/radio",
-            "title": "Radio"
           }
         },
-        "title": "自定义组件"
+        "title": "单选按钮分组"
       },
       {
         "path": "/doc/description",
@@ -214,10 +187,7 @@ const routes = [
               "value": "saga",
               "heading": "saga"
             }
-          ],
-          "group": {
-            "title": "介绍"
-          }
+          ]
         },
         "title": "标题内容"
       },
@@ -280,84 +250,53 @@ const routes = [
         "title": "or_so"
       },
       {
-        "path": "/zh-CN/components/modal",
-        "component": require('../../../docs/components/Modal/index.md').default,
+        "path": "/zh-CN/components/saga",
+        "component": require('../../../docs/components/Saga.md').default,
         "exact": true,
         "meta": {
-          "filePath": "docs/components/Modal/index.md",
-          "updatedTime": 1586015384000,
-          "title": "自定义组件",
-          "nav": {
-            "title": "组件",
-            "path": "/zh-CN/components"
+          "filePath": "docs/components/Saga.md",
+          "updatedTime": null,
+          "title": "流程图编辑器",
+          "saga": {
+            "title": "编辑器"
           },
-          "order": 2,
+          "order": 4,
           "slugs": [
             {
               "depth": 3,
-              "value": "自定义组件",
-              "heading": "自定义组件"
-            }
-          ],
-          "group": {
-            "path": "/zh-CN/components/modal",
-            "title": "Modal"
-          },
-          "locale": "zh-CN"
-        },
-        "title": "自定义组件"
-      },
-      {
-        "path": "/zh-CN/components/modal/test",
-        "component": require('../../../docs/components/Modal/test.md').default,
-        "exact": true,
-        "meta": {
-          "filePath": "docs/components/Modal/test.md",
-          "updatedTime": 1586015384000,
-          "title": "test",
-          "slugs": [
-            {
-              "depth": 1,
-              "value": "test",
-              "heading": "test"
-            },
-            {
-              "depth": 2,
-              "value": "test1",
-              "heading": "test1"
-            },
-            {
-              "depth": 2,
-              "value": "one",
-              "heading": "one"
-            },
-            {
-              "depth": 2,
-              "value": "Two",
-              "heading": "two"
-            },
-            {
-              "depth": 2,
-              "value": "Three",
-              "heading": "three"
-            },
-            {
-              "depth": 2,
-              "value": "Four",
-              "heading": "four"
+              "value": "流程图",
+              "heading": "流程图"
             }
           ],
           "nav": {
             "path": "/zh-CN/components",
             "title": "组件"
           },
+          "locale": "zh-CN"
+        },
+        "title": "流程图编辑器"
+      },
+      {
+        "path": "/zh-CN/components/modal",
+        "component": require('../../../docs/components/Modal/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/components/Modal/index.md",
+          "updatedTime": 1586015384000,
+          "title": "测试",
+          "nav": {
+            "title": "组件",
+            "path": "/zh-CN/components"
+          },
+          "order": 2,
+          "slugs": [],
           "group": {
             "path": "/zh-CN/components/modal",
             "title": "Modal"
           },
           "locale": "zh-CN"
         },
-        "title": "test"
+        "title": "测试"
       },
       {
         "path": "/zh-CN/components/radio",
@@ -366,26 +305,26 @@ const routes = [
         "meta": {
           "filePath": "docs/components/Radio/index.md",
           "updatedTime": 1586015384000,
-          "title": "自定义组件",
+          "title": "单选按钮分组",
+          "group": {
+            "title": "单选按钮分组",
+            "path": "/zh-CN/components/radio"
+          },
           "order": 1,
           "slugs": [
             {
               "depth": 3,
-              "value": "自定义组件",
-              "heading": "自定义组件"
+              "value": "自定义form组件",
+              "heading": "自定义form组件"
             }
           ],
           "nav": {
             "path": "/zh-CN/components",
             "title": "组件"
           },
-          "group": {
-            "path": "/zh-CN/components/radio",
-            "title": "Radio"
-          },
           "locale": "zh-CN"
         },
-        "title": "自定义组件"
+        "title": "单选按钮分组"
       },
       {
         "path": "/zh-CN/doc/description",

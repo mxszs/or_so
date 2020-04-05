@@ -1,4 +1,4 @@
-import { createBrowserHistory } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+import { createHashHistory } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
 
 let options = {
   "basename": "/"
@@ -7,10 +7,10 @@ if ((<any>window).routerBase) {
   options.basename = (<any>window).routerBase;
 }
 
-let history = createBrowserHistory(options);
+let history = createHashHistory(options);
 export const createHistory = (hotReload = false) => {
   if (!hotReload) {
-    history = createBrowserHistory(options);
+    history = createHashHistory(options);
   }
 
   return history;
