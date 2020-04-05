@@ -1,13 +1,16 @@
 {
   "private": true,
   "name": "dumi-lib",
+  "homepage": "https://mxszs.github.io/mxslearn",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "build": "father-build",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "predeploy": "dumi build",
+    "deploy": "gh-pages -d dist"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -29,6 +32,7 @@
     "antd": "^3.26.0",
     "dumi": "^1.0.5",
     "father-build": "^1.17.2",
+    "gh-pages": "^2.2.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
