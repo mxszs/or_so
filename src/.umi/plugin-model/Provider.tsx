@@ -1,12 +1,12 @@
 import React from 'react';
-import initialState from '/Users/orso/Desktop/learn/myDoc/src/.umi/plugin-initial-state/models/initialState';
+import initialState from '/Users/orso/Desktop/learn/MyDoc/src/.umi/plugin-initial-state/models/initialState';
 
 // @ts-ignore
-import Dispatcher from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/dispatcher';
+import Dispatcher from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/dispatcher';
 // @ts-ignore
-import Executor from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/executor';
+import Executor from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/executor';
 // @ts-ignore
-import { UmiContext } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/constant';
+import { UmiContext } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/constant';
 
 export const models = { '@@initialState': initialState,  };
 

@@ -1,4 +1,4 @@
-import { createBrowserHistory } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+import { createBrowserHistory } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
 
 let options = {
   "basename": "/"

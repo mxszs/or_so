@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 // @ts-ignore
-import isEqual from '/Users/orso/Desktop/learn/myDoc/node_modules/_fast-deep-equal@3.1.1@fast-deep-equal/index.js';
+import isEqual from '/Users/orso/Desktop/learn/MyDoc/node_modules/_fast-deep-equal@3.1.1@fast-deep-equal/index.js';
 // @ts-ignore
-import { UmiContext } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/constant';
+import { UmiContext } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_plugin-model@2.2.0@@umijs/plugin-model/lib/helpers/constant';
 import { Model, models } from './Provider';
 
 export type Models<T extends keyof typeof models> = Model<T>[T]

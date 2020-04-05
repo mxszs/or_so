@@ -1,4 +1,4 @@
-import { ApplyPluginsType } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+import { ApplyPluginsType } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
 import { plugin } from './plugin';
 
 const routes = [
@@ -8,8 +8,8 @@ const routes = [
   },
   {
     "path": "/",
-    "component": (props) => require('react').createElement(require('/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_preset-dumi@1.0.13@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"title":"Modal","path":"/components/modal","meta":{},"children":[{"path":"/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"path":"/guide","title":"标题内容","meta":{}}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"title":"Modal","path":"/zh-CN/components/modal","meta":{},"children":[{"path":"/zh-CN/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/zh-CN/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"title":"组件","path":"/components"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"title":"组件","path":"/zh-CN/components"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
+    "component": (props) => require('react').createElement(require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.0.13@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
+      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"title":"Modal","path":"/components/modal","meta":{},"children":[{"path":"/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"title":"介绍","children":[{"path":"/guide","title":"标题内容"}]}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"title":"Modal","path":"/zh-CN/components/modal","meta":{},"children":[{"path":"/zh-CN/components/modal","title":"自定义组件","meta":{"order":2}},{"path":"/zh-CN/components/modal/test","title":"test","meta":{}}]},{"title":"Radio","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"自定义组件","meta":{"order":1}}]}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"title":"组件","path":"/components"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"title":"组件","path":"/zh-CN/components"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -19,7 +19,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1585927080000,
+          "updatedTime": 1586015384000,
           "title": "or_so",
           "hero": {
             "title": "or_so",
@@ -59,7 +59,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Modal/index.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "自定义组件",
           "nav": {
             "title": "组件",
@@ -86,7 +86,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Modal/test.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "test",
           "slugs": [
             {
@@ -137,7 +137,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "自定义组件",
           "order": 1,
           "slugs": [
@@ -202,7 +202,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/guide/index.md",
-          "updatedTime": 1585927080000,
+          "updatedTime": 1586015384000,
           "title": "标题内容",
           "nav": {
             "title": "指南",
@@ -214,7 +214,10 @@ const routes = [
               "value": "saga",
               "heading": "saga"
             }
-          ]
+          ],
+          "group": {
+            "title": "介绍"
+          }
         },
         "title": "标题内容"
       },
@@ -241,7 +244,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
-          "updatedTime": 1585927080000,
+          "updatedTime": 1586015384000,
           "title": "or_so",
           "hero": {
             "title": "or_so",
@@ -282,7 +285,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Modal/index.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "自定义组件",
           "nav": {
             "title": "组件",
@@ -310,7 +313,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Modal/test.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "test",
           "slugs": [
             {
@@ -362,7 +365,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": null,
+          "updatedTime": 1586015384000,
           "title": "自定义组件",
           "order": 1,
           "slugs": [

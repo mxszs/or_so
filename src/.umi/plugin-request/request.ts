@@ -1,5 +1,5 @@
 /**
- * Base on https://github.com/umijs//Users/orso/Desktop/learn/myDoc/node_modules/_umi-request@1.2.19@umi-request
+ * Base on https://github.com/umijs//Users/orso/Desktop/learn/MyDoc/node_modules/_umi-request@1.2.19@umi-request
  */
 import {
   extend,
@@ -12,14 +12,14 @@ import {
   RequestResponse,
   RequestInterceptor,
   ResponseInterceptor,
-} from '/Users/orso/Desktop/learn/myDoc/node_modules/_umi-request@1.2.19@umi-request';
+} from '/Users/orso/Desktop/learn/MyDoc/node_modules/_umi-request@1.2.19@umi-request';
 // @ts-ignore
 
 import { ApplyPluginsType } from 'umi';
 import { history, plugin } from '../core/umiExports';
             
 import { message, notification } from 'antd';
-import useUmiRequest from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_use-request@1.3.1@@umijs/use-request';
+import useUmiRequest from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_use-request@1.3.1@@umijs/use-request';
 import {
   BaseOptions,
   BasePaginatedOptions,
@@ -35,7 +35,7 @@ import {
   PaginatedOptionsWithFormat,
   PaginatedParams,
   PaginatedResult,
-} from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_use-request@1.3.1@@umijs/use-request/lib/types';
+} from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_use-request@1.3.1@@umijs/use-request/lib/types';
 
 type ResultWithData<T = any> = { data: T; [key: string]: any };
 

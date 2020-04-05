@@ -2,8 +2,8 @@ import './core/polyfill';
 
 import { plugin } from './core/plugin';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
-import { renderClient } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_renderer-react@3.0.18@@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+import { renderClient } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_renderer-react@3.0.18@@umijs/renderer-react/dist/index.js';
 
 
 

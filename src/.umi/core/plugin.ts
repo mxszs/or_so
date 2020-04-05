@@ -1,4 +1,4 @@
-import { Plugin } from '/Users/orso/Desktop/learn/myDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+import { Plugin } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
 
 const plugin = new Plugin({
   validKeys: ['patchRoutes','rootContainer','render','onRouteChange','getInitialState','request',],
