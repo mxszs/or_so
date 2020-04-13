@@ -1,27 +1,39 @@
 import G6 from '@antv/g6';
 
-function renderLine(type = 'polyline') {
-  console.log(1111);
+function renderLine() {
   G6.registerEdge(
     'editLine',
     {
-      afterDraw(cfg, group) {
+      draw(cfg:any, group:any) {
         const startPoint = cfg.startPoint;
         const endPoint = cfg.endPoint;
-
-        console.log(cfg, startPoint, 'bbox');
-        const appLine = group?.addShape('circle', {
+        const shape = group.addShape('path', {
           attrs: {
-            x: 30,
-            y: 40,
+            stroke: '#333',
+            endArrow: {
+              path: 'M 0,0 L 6,-4 L 6,4 Z',
+              fill: '#333',
+              stroke: '#666',
+              opacity: 0.8,
+            },
+            path: [
+              ['M', startPoint.x, startPoint.y],
+              ['L', endPoint.x, endPoint.y],
+            ],
+          },
+          name: 'path-shape',
+        });
+        group.addShape('circle', {
+          attrs: {
+            x: (startPoint.x + endPoint.x) / 2,
+            y: (startPoint.y + endPoint.y) / 2,
             r: 5,
             stroke: 'red',
-          },
-        });
-        return appLine;
+          }
+        })
+        return shape;
       },
     },
-    'polyline',
   );
 }
 

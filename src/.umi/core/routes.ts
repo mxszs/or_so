@@ -71,7 +71,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
-          "updatedTime": null,
+          "updatedTime": 1586788418000,
           "title": "流程图编辑器",
           "sidemenu": false,
           "saga": {
@@ -98,7 +98,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Saga.md",
-          "updatedTime": 1586084251000,
+          "updatedTime": 1586788418000,
           "title": "流程图查看",
           "saga": {
             "title": "流程图查看",
@@ -124,7 +124,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/test.md",
-          "updatedTime": null,
+          "updatedTime": 1586788418000,
           "title": "事件总线",
           "nav": {
             "title": "组件",
@@ -151,7 +151,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": 1586084251000,
+          "updatedTime": 1586788418000,
           "slugs": [],
           "title": "Index",
           "nav": {
@@ -289,7 +289,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
-          "updatedTime": null,
+          "updatedTime": 1586788418000,
           "title": "流程图编辑器",
           "sidemenu": false,
           "saga": {
@@ -317,7 +317,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Saga.md",
-          "updatedTime": 1586084251000,
+          "updatedTime": 1586788418000,
           "title": "流程图查看",
           "saga": {
             "title": "流程图查看",
@@ -344,7 +344,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/test.md",
-          "updatedTime": null,
+          "updatedTime": 1586788418000,
           "title": "事件总线",
           "nav": {
             "title": "组件",
@@ -372,7 +372,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": 1586084251000,
+          "updatedTime": 1586788418000,
           "slugs": [],
           "title": "Index",
           "nav": {

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { Graph } from '@antv/g6';
+import React, { useRef, useContext, useEffect,  } from 'react';
 import { renderG6 } from './Graph';
+import { graphContext } from './Graph/graphContext';
+
 import ToolBar from './ToolBar';
 
 import './index.less';
@@ -8,17 +9,23 @@ import './index.less';
 type GraphParams = {};
 
 const RenderGraph: React.FC<GraphParams> = () => {
+
+const {
+  ref,
+} = useContext(graphContext);
+console.log(useContext(graphContext), 'useContext(graphContext)')
   const GraphRef = useRef<HTMLDivElement>(null);
   const minimapRef = useRef(null);
-  const graphContext = useRef<{ graph: Graph }>({ graph: {} as Graph });
 
   useEffect(() => {
-    if (graphContext.current.graph.destroy) {
-      graphContext.current.graph.destroy();
+    if (ref.graph.destroy) {
+      ref.graph.destroy()
     } else {
-      graphContext.current.graph = renderG6(GraphRef, minimapRef);
+      ref.graph = renderG6(GraphRef, minimapRef);
     }
+
   }, []);
+
 
   return (
     <div>
@@ -30,4 +37,5 @@ const RenderGraph: React.FC<GraphParams> = () => {
   );
 };
 
-export default RenderGraph;
+
+export default React.memo(RenderGraph);
