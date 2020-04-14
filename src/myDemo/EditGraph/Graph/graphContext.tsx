@@ -1,38 +1,50 @@
-import React, { createContext, useRef } from 'react';
+import React, { createContext, useRef, MutableRefObject, useState } from 'react';
 import { Graph } from '@antv/g6';
+import eventBus from '@/myDemo/util/eventBus';
 
-export const graphContext = createContext<{
-    ref: {
-        graph?: Graph, 
-    },
-    state: {
+type graphContextType = {
+    ref: MutableRefObject<{
+        graph: Graph;
+    }>;
+    state: MutableRefObject<{
         zoom?: number;
-    }
-}>({
-    ref: {
-        graph: {} as Graph,
-    },
-    state: {
-        zoom: 1
-    }
-})
+        isEdit?: boolean;
+        setIsEdit?: (value: boolean) => void;
+    }>,
+    bus: any
+}
 
-const GraphContext:React.FC = ({ children }) => {
-    const graphRef = useRef<Graph>({} as Graph);
-    const graphRefState = useRef<{
-        zoom?: number;
-    }>({
-        zoom: 1
+
+export const graphContext = createContext<graphContextType>(null)
+
+const GraphContextProvider:React.FC = ({ children }) => {
+    const ref = useRef({
+        graph: ''
     });
+    const [isEdit, setIsEdit] = useState<boolean>(false)
+
+    const state = useRef<{
+        zoom?: number;
+        isEdit?: boolean;
+        setIsEdit?: (value: boolean) => void;
+    }>({
+        zoom: 1,
+        isEdit: isEdit,
+        setIsEdit,
+    });
+    state.current.isEdit = isEdit
+    state.current.setIsEdit = setIsEdit
+    
+    const bus = useRef(eventBus)
+
     return <graphContext.Provider
         value={{
-            ref: {
-                graph: graphRef.current
-            },
-            state: graphRefState.current,
+            ref,
+            state,
+            bus,
         }}
     >
         {children}
     </graphContext.Provider>
 }
-export default GraphContext;
+export default GraphContextProvider;

@@ -10,6 +10,7 @@ export class EventDispatcer {
       throw new Error('这是一个单例！');
     }
     this.eventMap = new Map();
+    
   }
   dispatchEvent(event: eventType, once: boolean = false) {
     let evtSet = this.eventMap.get(event.type);

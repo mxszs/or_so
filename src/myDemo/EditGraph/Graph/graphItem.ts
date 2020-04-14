@@ -1,6 +1,6 @@
 import G6 from '@antv/g6';
 
-function renderLine() {
+function renderLine(initState) {
   G6.registerEdge(
     'editLine',
     {
@@ -23,12 +23,33 @@ function renderLine() {
           },
           name: 'path-shape',
         });
+        console.log(initState, 'initStatesaddas')
+
+        if (initState.isEdit) {
+          return shape;
+        }
+
         group.addShape('circle', {
           attrs: {
             x: (startPoint.x + endPoint.x) / 2,
             y: (startPoint.y + endPoint.y) / 2,
-            r: 5,
+            r: 10,
             stroke: 'red',
+            fill: '#fff',
+            lineDash: [4],
+            cursor: 'pointer'
+          }
+        })
+        group.addShape('text', {
+          attrs: {
+            x: (startPoint.x + endPoint.x) / 2,
+            y: (startPoint.y + endPoint.y) / 2,
+            textAlign: 'center',
+            textBaseline: 'middle',
+            fill: 'red',
+            fontSize: 14,
+            text: '+',
+            cursor: 'pointer'
           }
         })
         return shape;

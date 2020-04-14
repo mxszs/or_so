@@ -1,7 +1,5 @@
 import G6 from '@antv/g6';
-import { renderLine } from './graphItem';
 
-renderLine();
 export const renderG6 = (
   minimapRef: React.RefObject<HTMLDivElement>,
   GraphRef: any,
@@ -24,7 +22,7 @@ export const renderG6 = (
     layout: {
       type: 'dagre',
       controlPoints: true,
-      ranksep: 20,
+      ranksep: 40,
       nodesep: 50,
     },
     defaultNode: {
