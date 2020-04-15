@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import GraphContextProvider, { graphContext } from './Graph/graphContext';
+import React from 'react';
+import GraphContextProvider from './Graph/graphContext';
 
 import Graph from './Graph/Graph';
 
@@ -10,6 +10,6 @@ const EditGraph = () => {
     <GraphContextProvider>
       <Graph />
     </GraphContextProvider>
-  )
-}
+  );
+};
 export default EditGraph;

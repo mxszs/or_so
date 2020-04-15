@@ -4,11 +4,12 @@ import renderGraphItem from './renderGraphItem';
 import { graphContext } from './graphContext';
 
 import ToolBar from '../ToolBar';
+import NodeDrawer from '../NodeItem/NodeDrawer';
 
 import './index.less';
 
 type GraphParams = {};
-let id = 3;
+
 const RenderGraph: React.FC<GraphParams> = () => {
   const {
     ref: { current: ref },
@@ -25,11 +26,15 @@ const RenderGraph: React.FC<GraphParams> = () => {
     } else {
       ref.graph = renderG6(GraphRef, minimapRef);
     }
+    return () => {
+      ref.graph.destroy();
+      initState.isEdit = false;
+    };
   }, []);
 
   useEffect(() => {
     renderGraphItem(initState);
-  }, [initState.isEdit]);
+  }, []);
 
   useEffect(() => {
     const test = () => console.log(111);
@@ -40,7 +45,6 @@ const RenderGraph: React.FC<GraphParams> = () => {
   }, []);
 
   useEffect(() => {
-    console.log(ref.graph, 'useLayoutEffect');
     ref.graph.on('edge:click', (ev: any) => {
       const { item, target = {} } = ev;
       const { cfg = {} } = target;
@@ -76,6 +80,7 @@ const RenderGraph: React.FC<GraphParams> = () => {
       <div ref={GraphRef}>
         <div ref={minimapRef}></div>
       </div>
+      <NodeDrawer />
     </div>
   );
 };

@@ -21,7 +21,6 @@ function renderLine(initState) {
         },
         name: 'path-shape',
       });
-
       if (!initState.isEdit) {
         return shape;
       }
