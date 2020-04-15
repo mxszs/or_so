@@ -31,9 +31,12 @@ export const renderG6 = (
     defaultEdge: {
       type: 'editLine',
       style: {
-        endArrow: true,
-        lineWidth: 2,
-        stroke: '#C2C8D5',
+        endArrow: {
+          path: 'M 0,0 L 6,-4 L 6,4 Z',
+        },
+        fill: '#666',
+        stroke: '#333',
+        lineWidth: 1,
       },
     },
     plugins: [minimap],
