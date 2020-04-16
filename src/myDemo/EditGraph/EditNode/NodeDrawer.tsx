@@ -22,7 +22,7 @@ const EditGraph = () => {
       width={500}
       onClose={() => setVisible(false)}
     >
-      {JSON.stringify(racod, null, 2)}
+      <pre>{JSON.stringify(racod, null, 2)}</pre>
     </Drawer>
   );
 };

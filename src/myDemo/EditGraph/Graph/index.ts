@@ -42,7 +42,10 @@ export const renderG6 = (
     plugins: [minimap],
   });
   graph.data({
-    nodes: [{ id: '1' }, { id: '2' }],
+    nodes: [
+      { id: '1', isDelete: 'not', nodeType: 'begin' },
+      { id: '2', isDelete: 'not', nodeType: 'end' },
+    ],
     edges: [
       {
         source: '1',

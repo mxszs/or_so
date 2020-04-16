@@ -4,8 +4,7 @@ import renderGraphItem from './renderGraphItem';
 import { graphContext } from './graphContext';
 
 import ToolBar from '../ToolBar';
-import NodeDrawer from '../NodeItem/NodeDrawer';
-
+import { NodeDrawer, NodeContextMenu } from '../EditNode';
 import './index.less';
 
 type GraphParams = {};
@@ -81,6 +80,7 @@ const RenderGraph: React.FC<GraphParams> = () => {
         <div ref={minimapRef}></div>
       </div>
       <NodeDrawer />
+      <NodeContextMenu />
     </div>
   );
 };

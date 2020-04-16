@@ -75,7 +75,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
-          "updatedTime": 1586788418000,
+          "updatedTime": 1586971773000,
           "title": "流程图编辑器",
           "saga": {
             "title": "流程图编辑器",
@@ -154,7 +154,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": 1586788418000,
+          "updatedTime": 1586971773000,
           "title": "表单",
           "group": {
             "title": "单选按钮",
@@ -298,7 +298,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
-          "updatedTime": 1586788418000,
+          "updatedTime": 1586971773000,
           "title": "流程图编辑器",
           "saga": {
             "title": "流程图编辑器",
@@ -380,7 +380,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
-          "updatedTime": 1586788418000,
+          "updatedTime": 1586971773000,
           "title": "表单",
           "group": {
             "title": "单选按钮",
