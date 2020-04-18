@@ -47,29 +47,27 @@ const RenderGraph: React.FC<GraphParams> = () => {
     ref.graph.on('edge:click', (ev: any) => {
       const { item, target = {} } = ev;
       const { cfg = {} } = target;
-      if (!cfg.className) {
-        return;
+      if (cfg.className === 'addNode') {
+        const addId = String(new Date().getTime());
+        ref.graph.setAutoPaint(false);
+        ref.graph.addItem('node', {
+          type: 'circle',
+          id: addId,
+        });
+        ref.graph.addItem('edge', {
+          shape: 'editLine',
+          source: item.getSource().getModel().id,
+          target: addId,
+        });
+        ref.graph.addItem('edge', {
+          shape: 'editLine',
+          source: addId,
+          target: item.getTarget().getModel().id,
+        });
+        ref.graph.removeItem(item);
+        ref.graph.setAutoPaint(true);
+        ref.graph.changeData(ref.graph.save());
       }
-      const addId = String(new Date().getTime());
-      ref.graph.setAutoPaint(false);
-      ref.graph.addItem('node', {
-        type: 'circle',
-        label: addId,
-        id: addId,
-      });
-      ref.graph.addItem('edge', {
-        shape: 'editLine',
-        source: item.getSource().getModel().id,
-        target: addId,
-      });
-      ref.graph.addItem('edge', {
-        shape: 'editLine',
-        source: addId,
-        target: item.getTarget().getModel().id,
-      });
-      ref.graph.removeItem(item);
-      ref.graph.setAutoPaint(true);
-      ref.graph.changeData(ref.graph.save());
     });
   }, []);
 

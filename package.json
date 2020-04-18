@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@antv/g": "^3.4.7",
     "@antv/g6": "^3.4.4",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",

@@ -36,20 +36,21 @@ export const renderG6 = (
         },
         fill: '#666',
         stroke: '#333',
-        lineWidth: 1,
+        lineWidth: 2,
       },
     },
     plugins: [minimap],
   });
   graph.data({
     nodes: [
-      { id: '1', isDelete: 'not', nodeType: 'begin' },
-      { id: '2', isDelete: 'not', nodeType: 'end' },
+      { id: '1', isDelete: 'not', nodeType: 'begin', label: '开始' },
+      { id: '2', isDelete: 'not', nodeType: 'end', label: '结束' },
     ],
     edges: [
       {
         source: '1',
         target: '2',
+        label: '222',
         type: 'editLine',
       },
     ],
