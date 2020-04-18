@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Drawer } from 'antd';
+import { Drawer, Form, Input } from 'antd';
 import { graphContext } from '../Graph/graphContext';
 
 const EditGraph = () => {

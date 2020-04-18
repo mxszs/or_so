@@ -1,11 +1,10 @@
-import React, { useState, forwardRef, useRef } from 'react';
+import React, { useState, forwardRef, useRef, useEffect } from 'react';
 import { Form, Radio, Button, InputNumber, Select } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
 import classnames from 'classnames';
 import { test } from './mock';
 import styles from './index.less';
 
-interface Props extends FormComponentProps {}
+interface Props {}
 
 type RenderRadioType = {
   list: { port: string; maxReq: number }[];
@@ -21,14 +20,23 @@ const style = {
 };
 const RenderRadio: React.FC<RenderRadioType> = forwardRef(
   ({ list, changeMaxReq, portValue, onChange, getFieldValue }, ref: any) => {
-    const onSelect = (_, arr) => {
+    const [selectValue, setSelectValue] = useState<string | number>(portValue);
+    const getPortValue = getFieldValue('port');
+    const onSelect = (value: React.ReactText, arr: any) => {
       changeMaxReq(arr.key);
+      setSelectValue(value);
     };
+
+    useEffect(() => {
+      if (list.findIndex(item => item.port === getPortValue) < 7) {
+        setSelectValue(portValue);
+      }
+    }, [getPortValue]);
     return (
       <>
         <Radio.Group
           onChange={onChange}
-          value={getFieldValue('port')}
+          value={getPortValue}
           defaultValue={portValue}
           ref={ref}
           buttonStyle="solid"
@@ -50,10 +58,10 @@ const RenderRadio: React.FC<RenderRadioType> = forwardRef(
               [styles.selcetStyle]: list
                 .filter((item, index) => index >= 7)
                 .map(item => item.port)
-                .includes(getFieldValue('port')),
+                .includes(getPortValue),
               [styles.defaultSelectStyle]: true,
             })}
-            defaultValue={portValue}
+            value={selectValue}
             style={style}
             onChange={onChange}
           >
@@ -74,52 +82,40 @@ const RenderRadio: React.FC<RenderRadioType> = forwardRef(
   },
 );
 
-const RadioButtonGroup: React.FC<Props> = ({ form }) => {
+const RadioButtonGroup: React.FC<Props> = () => {
   const [value, setValue] = useState({});
-  const {
-    getFieldDecorator,
-    validateFields,
-    setFieldsValue,
-    getFieldValue,
-  } = form;
+  const [form] = Form.useForm();
   const renderRef = useRef<any>(null);
-  const submit = () => {
-    validateFields((err, values) => {
-      if (!err) {
-        console.log(values);
-        setValue(values);
-      }
-    });
+  const onFinish = (values: any) => {
+    setValue(values);
   };
-  const changeMaxReq = index => {
-    setFieldsValue({ ['maxReq']: test[index].maxReq });
+  const changeMaxReq = (index: number) => {
+    form.setFieldsValue({ maxReq: test[index].maxReq });
   };
   return (
     <>
-      <Form>
-        <Form.Item>
-          {getFieldDecorator('port', {
-            initialValue: test[0].port,
-          })(
-            <RenderRadio
-              ref={renderRef}
-              getFieldValue={getFieldValue}
-              portValue={test[0].port}
-              list={test}
-              changeMaxReq={changeMaxReq}
-            />,
-          )}
+      <Form
+        onFinish={onFinish}
+        initialValues={{ port: test[0].port, maxReq: test[0].maxReq }}
+        form={form}
+      >
+        <Form.Item name="port" rules={[{ required: true }]}>
+          <RenderRadio
+            ref={renderRef}
+            getFieldValue={form.getFieldValue}
+            portValue={test[0].port}
+            list={test}
+            changeMaxReq={changeMaxReq}
+          />
         </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('maxReq', {
-            initialValue: test[0].maxReq,
-          })(<InputNumber />)}
+        <Form.Item name="maxReq">
+          <InputNumber />
         </Form.Item>
-        <Button onClick={submit}>提交</Button>
+        <Button htmlType="submit">提交</Button>
       </Form>
       <div>{JSON.stringify(value, null, 2)}</div>
     </>
   );
 };
 
-export default Form.create<Props>()(RadioButtonGroup);
+export default RadioButtonGroup;
