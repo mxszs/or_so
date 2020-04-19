@@ -1,24 +1,10 @@
-import React, {
-  createContext,
-  useRef,
-  MutableRefObject,
-  useState,
-} from 'react';
+import React, { createContext, useRef } from 'react';
+import { NodeType } from '@/@types/NodeType';
+
 import { Graph } from '@antv/g6';
 import eventBus from '@/myDemo/util/eventBus';
 
-type graphContextType = {
-  ref: MutableRefObject<{
-    graph: Graph;
-  }>;
-  state: MutableRefObject<{
-    zoom?: number;
-    isEdit?: boolean;
-  }>;
-  bus: any;
-};
-
-export const graphContext = createContext<graphContextType>(null);
+export const graphContext = createContext<NodeType.graphContextType>(null);
 
 const GraphContextProvider: React.FC<{
   initState?: {

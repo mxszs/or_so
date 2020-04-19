@@ -27,6 +27,14 @@ export const renderG6 = (
     },
     defaultNode: {
       size: 20,
+      // linkPoints: {
+      //   top: true,
+      //   bottom: true,
+      //   left: true,
+      //   right: true,
+      //   size: 5,
+      //   fill: '#fff',
+      // },
     },
     defaultEdge: {
       type: 'editLine',

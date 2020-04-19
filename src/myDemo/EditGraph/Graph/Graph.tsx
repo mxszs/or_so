@@ -4,7 +4,7 @@ import renderGraphItem from './renderGraphItem';
 import { graphContext } from './graphContext';
 
 import ToolBar from '../ToolBar';
-import { NodeDrawer, NodeContextMenu } from '../EditNode';
+import { NodeDrawer, NodeContextMenu, AddNode } from '../EditNode';
 import './index.less';
 
 type GraphParams = {};
@@ -27,6 +27,7 @@ const RenderGraph: React.FC<GraphParams> = () => {
     }
     return () => {
       ref.graph.destroy();
+      ref.graph = null;
       initState.isEdit = false;
     };
   }, []);
@@ -43,42 +44,15 @@ const RenderGraph: React.FC<GraphParams> = () => {
     };
   }, []);
 
-  useEffect(() => {
-    ref.graph.on('edge:click', (ev: any) => {
-      const { item, target = {} } = ev;
-      const { cfg = {} } = target;
-      if (cfg.className === 'addNode') {
-        const addId = String(new Date().getTime());
-        ref.graph.setAutoPaint(false);
-        ref.graph.addItem('node', {
-          type: 'circle',
-          id: addId,
-        });
-        ref.graph.addItem('edge', {
-          shape: 'editLine',
-          source: item.getSource().getModel().id,
-          target: addId,
-        });
-        ref.graph.addItem('edge', {
-          shape: 'editLine',
-          source: addId,
-          target: item.getTarget().getModel().id,
-        });
-        ref.graph.removeItem(item);
-        ref.graph.setAutoPaint(true);
-        ref.graph.changeData(ref.graph.save());
-      }
-    });
-  }, []);
-
   return (
     <div>
       <ToolBar />
-      <div ref={GraphRef}>
+      <div style={{ position: 'relative' }} ref={GraphRef}>
         <div ref={minimapRef}></div>
+        <NodeContextMenu />
       </div>
       <NodeDrawer />
-      <NodeContextMenu />
+      <AddNode />
     </div>
   );
 };

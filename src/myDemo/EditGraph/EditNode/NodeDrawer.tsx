@@ -1,16 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Drawer, Form, Input, Button } from 'antd';
+import { Form, Input } from 'antd';
+import NodeDrawer from '@/components/NodeDrawer';
 import { graphContext } from '../Graph/graphContext';
+import { InitState } from '@/@types/NodeType';
+import { setTitleText } from '@/myDemo/EditGraph/EditNode';
 
-const setTitleText = {
-  node: '节点信息',
-  edge: '线条信息',
-};
-
-type InitState = {
-  visible: boolean;
-  title: 'node' | 'edge';
-};
+interface EditGraphInitState extends InitState {}
 
 const EditGraph = () => {
   const {
@@ -19,9 +14,9 @@ const EditGraph = () => {
   } = useContext(graphContext);
 
   const [form] = Form.useForm();
-  const [initState, setInitState] = useState<InitState>({
+  const [initState, setInitState] = useState<EditGraphInitState>({
     visible: false,
-    title: 'node',
+    title: 'editNode',
   });
   const [racod, setRacod] = useState({});
 
@@ -35,7 +30,7 @@ const EditGraph = () => {
       setRacod(item);
       setInitState({
         visible: true,
-        title: 'node',
+        title: 'editNode',
       });
       form.setFieldsValue({ label: item.getModel().label });
     });
@@ -48,7 +43,7 @@ const EditGraph = () => {
       }
       setInitState({
         visible: true,
-        title: 'edge',
+        title: 'editEdge',
       });
       setRacod(item);
       form.setFieldsValue({ label: item.getModel().label });
@@ -83,32 +78,18 @@ const EditGraph = () => {
     });
   };
   return (
-    <Drawer
+    <NodeDrawer
       title={setTitleText[initState.title]}
       visible={initState.visible}
-      width={500}
       onClose={onClose}
-      footer={
-        <div
-          style={{
-            textAlign: 'left',
-          }}
-        >
-          <Button onClick={onClose} style={{ marginRight: 8 }}>
-            取消
-          </Button>
-          <Button onClick={onFinish} type="primary">
-            确定
-          </Button>
-        </div>
-      }
+      onFinish={onFinish}
     >
       <Form form={form} initialValues={{ label: '' }}>
         <Form.Item label="Label" shouldUpdate name="label">
           <Input />
         </Form.Item>
       </Form>
-    </Drawer>
+    </NodeDrawer>
   );
 };
 export default EditGraph;

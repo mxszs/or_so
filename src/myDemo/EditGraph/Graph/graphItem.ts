@@ -1,11 +1,17 @@
 import G6 from '@antv/g6';
+import { ModelConfig, IPoint } from '@antv/g6/lib/types';
+import GGroup from '@antv/g-canvas/lib/group';
 import G from '@antv/g';
+import { NodeType } from '@/@types/NodeType';
 
-function renderLine(initState) {
+const BASE_NODEWIDTH = 180;
+const BASE_NODEHEIGHT = 50;
+
+function renderLine(initState: NodeType.stateType) {
   G6.registerEdge('editLine', {
-    draw(cfg: any, group: any) {
-      const startPoint = cfg.startPoint;
-      const endPoint = cfg.endPoint;
+    draw(cfg: ModelConfig, group: GGroup) {
+      const startPoint: IPoint = cfg.startPoint || { x: 0, y: 0 };
+      const endPoint: IPoint = cfg.endPoint || { x: 0, y: 0 };
       const shape = group.addShape('path', {
         attrs: {
           stroke: '#333',
@@ -17,8 +23,8 @@ function renderLine(initState) {
             fill: '#666',
           },
           path: [
-            ['M', startPoint.x, startPoint.y],
-            ['L', endPoint.x, endPoint.y],
+            ['M', startPoint?.x, startPoint?.y],
+            ['L', endPoint?.x, endPoint?.y],
           ],
         },
         name: 'path-shape',
@@ -83,21 +89,64 @@ function renderLine(initState) {
       });
       return shape;
     },
-    afterDraw(cfg: any, group: any) {
-      // const startPoint = cfg.startPoint;
-      // const endPoint = cfg.endPoint;
-      // const { label } = cfg;
+    afterDraw(cfg: any, group: any) {},
+  });
+}
+
+function renderbaseNode(initState: NodeType.stateType) {
+  G6.registerNode('baseNode', {
+    draw(cfg: ModelConfig, group: GGroup) {
+      const { label } = cfg;
+      const baseNode = group.addShape('rect', {
+        attrs: {
+          x: -(BASE_NODEWIDTH / 2),
+          y: 0,
+          width: BASE_NODEWIDTH,
+          height: BASE_NODEHEIGHT,
+          fill: '#fff',
+          stroke: 'blue',
+          radius: 4,
+          anchorPoints: [
+            [0, 1],
+            [0.5, 1],
+          ],
+        },
+      });
+      group.addShape('text', {
+        attrs: {
+          x: 0,
+          y: BASE_NODEHEIGHT / 2,
+          text: label,
+          fill: '#000',
+          textAlign: 'center',
+          textBaseline: 'middle',
+        },
+      });
+      // 绘制删除图标
+      // if (!initState.isEdit) {
+      //   return baseNode;
+      // }
       // group.addShape('text', {
       //   attrs: {
-      //     x: 0,
-      //     y: 20,
-      //     text: label || '',
-      //     fill: 'red',
-      //     stroke: '#fff'
-      //   }
+      //     x: BASE_NODEWIDTH / 2 - 16,
+      //     y: 16,
+      //     fontFamily: 'iconfont',
+      //     text: '\ue619',
+      //     fill: '#000',
+      //     fontSize: 16,
+      //     cursor: 'pointer',
+      //   },
+      //   name: 'deleteNode'
       // })
+      return baseNode;
+    },
+    getAnchorPoints() {
+      return [
+        [0.5, 0],
+        [0.5, 1],
+      ];
     },
   });
 }
 
-export { renderLine };
+export { renderLine, renderbaseNode };

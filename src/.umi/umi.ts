@@ -6,7 +6,7 @@ import { ApplyPluginsType } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_
 import { renderClient } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_renderer-react@3.0.18@@umijs/renderer-react/dist/index.js';
 
 
-
+require('../global.less');
 
 const getClientRender = (args: { hot?: boolean } = {}) => plugin.applyPlugins({
   key: 'render',
