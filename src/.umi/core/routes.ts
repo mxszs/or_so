@@ -23,9 +23,13 @@ const routes = [
     "component": require('../../myDemo/Form/RadioButton.tsx').default
   },
   {
+    "path": "/_demos/index-2",
+    "component": require('../../myDemo/EditTable/index.tsx').default
+  },
+  {
     "path": "/",
     "component": (props) => require('react').createElement(require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.0.13@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"path":"/components/test","title":"事件总线","meta":{}},{"path":"/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"表单","meta":{}}]},{"path":"/components/edit-graph","title":"流程图编辑器","meta":{}}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"path":"/guide","title":"标题内容","meta":{}}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"path":"/zh-CN/components/test","title":"事件总线","meta":{}},{"path":"/zh-CN/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"表单","meta":{}}]},{"path":"/zh-CN/components/edit-graph","title":"流程图编辑器","meta":{}}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"path":"/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"path":"/zh-CN/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
+      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"path":"/components/test","title":"事件总线","meta":{}},{"path":"/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"表单","meta":{}}]},{"path":"/components/edit-table","title":"可编辑表单表格","meta":{}},{"path":"/components/edit-graph","title":"流程图编辑器","meta":{}}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"path":"/guide","title":"标题内容","meta":{}}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"path":"/zh-CN/components/test","title":"事件总线","meta":{}},{"path":"/zh-CN/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"表单","meta":{}}]},{"path":"/zh-CN/components/edit-table","title":"可编辑表单表格","meta":{}},{"path":"/zh-CN/components/edit-graph","title":"流程图编辑器","meta":{}}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"path":"/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"path":"/zh-CN/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
       ...props,
     }),
     "routes": [
@@ -94,6 +98,28 @@ const routes = [
           }
         },
         "title": "流程图编辑器"
+      },
+      {
+        "path": "/components/edit-table",
+        "component": require('../../../docs/components/EditTable.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/components/EditTable.md",
+          "updatedTime": null,
+          "title": "可编辑表单表格",
+          "slugs": [
+            {
+              "depth": 3,
+              "value": "表单表格",
+              "heading": "表单表格"
+            }
+          ],
+          "nav": {
+            "path": "/components",
+            "title": "组件"
+          }
+        },
+        "title": "可编辑表单表格"
       },
       {
         "path": "/components/saga",
@@ -318,6 +344,29 @@ const routes = [
           "locale": "zh-CN"
         },
         "title": "流程图编辑器"
+      },
+      {
+        "path": "/zh-CN/components/edit-table",
+        "component": require('../../../docs/components/EditTable.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/components/EditTable.md",
+          "updatedTime": null,
+          "title": "可编辑表单表格",
+          "slugs": [
+            {
+              "depth": 3,
+              "value": "表单表格",
+              "heading": "表单表格"
+            }
+          ],
+          "nav": {
+            "path": "/zh-CN/components",
+            "title": "组件"
+          },
+          "locale": "zh-CN"
+        },
+        "title": "可编辑表单表格"
       },
       {
         "path": "/zh-CN/components/saga",
