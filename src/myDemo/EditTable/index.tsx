@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Table, Input, Button } from 'antd';
-
+import testData from './testData';
 type Props = {};
 
 type Item = {
@@ -111,6 +111,7 @@ const EditTable: React.FC<Props> = () => {
         </Form.Item>
         <Button htmlType="submit">提交</Button>
       </Form>
+      {console.log(testData)}
     </>
   );
 };

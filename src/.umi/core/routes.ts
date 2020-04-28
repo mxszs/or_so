@@ -8,6 +8,10 @@ const routes = [
   },
   {
     "path": "/_demos/index-1",
+    "component": require('../../myDemo/EditTable/index.tsx').default
+  },
+  {
+    "path": "/_demos/index-2",
     "component": require('../../myDemo/Graph/index.tsx').default
   },
   {
@@ -21,10 +25,6 @@ const routes = [
   {
     "path": "/_demos/radio-button",
     "component": require('../../myDemo/Form/RadioButton.tsx').default
-  },
-  {
-    "path": "/_demos/index-2",
-    "component": require('../../myDemo/EditTable/index.tsx').default
   },
   {
     "path": "/",
@@ -105,7 +105,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditTable.md",
-          "updatedTime": null,
+          "updatedTime": 1588007557000,
           "title": "可编辑表单表格",
           "slugs": [
             {
@@ -351,7 +351,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditTable.md",
-          "updatedTime": null,
+          "updatedTime": 1588007557000,
           "title": "可编辑表单表格",
           "slugs": [
             {
