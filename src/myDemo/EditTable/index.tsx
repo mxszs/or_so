@@ -11,7 +11,7 @@ type Item = {
 
 type ChildTableProps = {
   dataSource: Item[];
-  remove: (index: number) => void;
+  remove: (index: string) => void;
   addItem: () => void;
 };
 
@@ -47,7 +47,7 @@ const ChildTable: React.FC<ChildTableProps> = ({
       key: 'option',
       render: (_: string, recod: Item, index: number) => (
         <Form.Item>
-          <a onClick={() => remove(index)}>删除</a>
+          <a onClick={() => remove(recod.id)}>删除</a>
         </Form.Item>
       ),
     },
@@ -71,16 +71,21 @@ const ChildTable: React.FC<ChildTableProps> = ({
 };
 
 const EditTable: React.FC<Props> = () => {
-  const [list, setDataSource] = useState<Item[]>([]);
+  const [list, setDataSource] = useState<Item[]>([
+    {
+      age: '22',
+      name: 'test',
+      id: '001',
+    },
+  ]);
   const [form] = Form.useForm();
   const onFinish = (values: any) => {
     console.log(values);
   };
 
-  const remove = (index: number) => {
+  const remove = (id: string) => {
     const temp = [...list];
-    temp.splice(index, 1);
-    setDataSource(temp);
+    setDataSource(temp.filter(item => item.id !== id));
   };
 
   const addItem = () => {
@@ -106,7 +111,7 @@ const EditTable: React.FC<Props> = () => {
           <ChildTable
             dataSource={list}
             addItem={addItem}
-            remove={(index: number) => remove(index)}
+            remove={(id: string) => remove(id)}
           />
         </Form.Item>
         <Button htmlType="submit">提交</Button>
