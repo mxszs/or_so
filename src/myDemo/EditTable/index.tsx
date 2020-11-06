@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Table, Input, Button } from 'antd';
-import testData from './testData';
+import {
+  Form,
+  Table,
+  Input,
+  Button,
+  Tabs,
+  Collapse,
+  Row,
+  Col,
+  Select,
+  Space,
+} from 'antd';
+import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
+import { TabsProps } from 'antd/lib/tabs';
+import { useDynamicList } from 'ahooks';
+import { testData } from './testData';
+
 type Props = {};
 
 type Item = {
@@ -9,115 +24,322 @@ type Item = {
   id: string;
 };
 
-type ChildTableProps = {
-  dataSource: Item[];
-  remove: (index: string) => void;
-  addItem: () => void;
-};
+const { TabPane } = Tabs;
+const { Item, List } = Form;
+const { Panel } = Collapse;
 
-let keyIndex = 0;
-const ChildTable: React.FC<ChildTableProps> = ({
-  dataSource,
-  remove,
-  addItem,
-}) => {
-  const columns = [
-    {
-      title: '姓名',
-      key: 'name',
-      dataIndex: 'name',
-      render: (name: string, recod: Item, index: number) => (
-        <Form.Item name={['params', index, 'name']}>
-          <Input />
-        </Form.Item>
-      ),
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      dataIndex: 'age',
-      render: (age: string, recod: Item, index: number) => (
-        <Form.Item name={['params', index, 'age']}>
-          <Input />
-        </Form.Item>
-      ),
-    },
-    {
-      title: '操作',
-      key: 'option',
-      render: (_: string, recod: Item, index: number) => (
-        <Form.Item>
-          <a onClick={() => remove(recod.id)}>删除</a>
-        </Form.Item>
-      ),
-    },
-  ];
-  return (
-    <div>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        rowKey={(recod: Item) => recod.id}
-      />
-      <Button
-        onClick={addItem}
-        style={{ width: '100%', textAlign: 'center' }}
-        type="dashed"
-      >
-        添加+
-      </Button>
-    </div>
-  );
-};
+const defaultList = [
+  {
+    title: '',
+    routers: [
+      {
+        protocolSupport: [{}],
+      },
+    ],
+  },
+  {
+    title: '',
+    routers: [
+      {
+        protocolSupport: [{}],
+      },
+    ],
+  },
+];
 
 const EditTable: React.FC<Props> = () => {
-  const [list, setDataSource] = useState<Item[]>([
-    {
-      age: '22',
-      name: 'test',
-      id: '001',
-    },
-  ]);
+  const [params, setParams] = useState({});
+
+  const { list, push, remove, getKey } = useDynamicList(defaultList);
+
   const [form] = Form.useForm();
-  const onFinish = (values: any) => {
-    console.log(values);
-  };
 
-  const remove = (id: string) => {
-    const temp = [...list];
-    setDataSource(temp.filter(item => item.id !== id));
-  };
-
-  const addItem = () => {
-    keyIndex += 1;
-    const temp = [...list];
-    temp.push({
-      name: '',
-      age: '',
-      id: keyIndex.toString(),
+  // 提交
+  const submit = () => {
+    form.validateFields().then(values => {
+      console.log(values, 'form');
+      const gatewayList: any = [];
+      values.gatewayList.forEach((item: any) => {
+        item.routers.forEach((wayItem: any) => {
+          gatewayList.push({
+            zone: item.zone,
+            name: wayItem.outsideName,
+            host: wayItem.outsideHost,
+            routers: {
+              protocolSupport: wayItem.protocolSupport,
+              type: wayItem.type,
+            },
+          });
+        });
+      });
+      const params = {
+        configKey: 'test',
+        param: {
+          gatewayList,
+        },
+      };
+      setParams(params);
+      console.log(params, 'params');
     });
-    setDataSource(temp);
   };
+  // 设置初值
+  useEffect(() => {
+    if (!testData) {
+      const gatewayList: any = [];
+      testData.forEach(item => {
+        const routers: any = [];
+        item.routers.forEach(routerItem =>
+          routers.push({
+            ...routerItem,
+            outsideName: item.name,
+            outsideHost: item.host,
+          }),
+        );
+        console.log(routers, 'routers');
+        gatewayList.push({
+          zone: item.zone,
+          routers,
+        });
+        // item.routers.forEach(routeItem => {
+        //   gatewayList.push({
+        //     zone: item.zone,
+        //   })
+      });
+
+      form.setFieldsValue({ gatewayList: gatewayList });
+    } else {
+      form.setFieldsValue({ gatewayList: defaultList });
+    }
+  }, []);
+  // 添加TabPane
+  const addTabPane = () => {
+    push({
+      title: '',
+      routers: [
+        {
+          protocolSupport: [{}],
+        },
+      ],
+    });
+
+    // 给表单添加默认值
+    const values = form.getFieldValue('gatewayList');
+    values.push({
+      routers: [
+        {
+          protocolSupport: [{}],
+        },
+      ],
+    });
+    form.setFieldsValue({ gatewayList: values });
+  };
+
+  const layout = {
+    labelCol: { span: 2 },
+    wrapperCol: { span: 14 },
+  };
+  const routerItemLayout = {
+    labelCol: { span: 4 },
+    wrapperCol: { span: 16 },
+  };
+
   return (
     <>
-      <Form labelCol={{ span: 2 }} form={form} onFinish={onFinish}>
-        <Form.Item label="用户名" name="name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="密码" name="password">
-          <Input />
-        </Form.Item>
-        <Form.Item shouldUpdate label="信息">
-          <ChildTable
-            dataSource={list}
-            addItem={addItem}
-            remove={(id: string) => remove(id)}
-          />
-        </Form.Item>
-        <Button htmlType="submit">提交</Button>
+      <Form {...layout} labelCol={{ span: 2 }} form={form}>
+        <Tabs
+          type="editable-card"
+          hideAdd
+          tabBarExtraContent={<Button onClick={addTabPane}>添加</Button>}
+        >
+          {list.map((item, index) => (
+            <TabPane
+              key={`${getKey(index)}`}
+              closeIcon={<CloseOutlined onClick={() => remove(index)} />}
+              tab={`Zone ${getKey(index)}`}
+            >
+              <Item
+                {...layout}
+                label="zone"
+                name={['gatewayList', getKey(index), 'zone']}
+                rules={[
+                  {
+                    required: true,
+                    message: '请填写Zone',
+                  },
+                ]}
+              >
+                <Input placeholder="请填写Zone" />
+              </Item>
+              <List
+                {...layout}
+                name={['gatewayList', getKey(index), 'routers']}
+              >
+                {(fields, { add, remove }) => (
+                  <>
+                    {fields.map((collapseItem, collapseIndex) => (
+                      <Collapse
+                        style={{ marginBottom: 24 }}
+                        defaultActiveKey={[`${collapseItem.fieldKey}`]}
+                        key={collapseItem.fieldKey}
+                      >
+                        <Panel
+                          forceRender
+                          extra={
+                            <CloseOutlined
+                              onClick={() => remove(collapseItem.name)}
+                            />
+                          }
+                          header={
+                            <Item
+                              style={{
+                                marginBottom: 0,
+                                width: '50%',
+                                display: 'inline-flex',
+                              }}
+                              rules={[
+                                {
+                                  required: true,
+                                  message: '请填写网关名称',
+                                },
+                              ]}
+                              {...routerItemLayout}
+                              label="网关名称"
+                              name={[collapseItem.fieldKey, 'outsideName']}
+                            >
+                              <Input
+                                placeholder="请填写网关名称"
+                                onClick={e => e.stopPropagation()}
+                                addonBefore="名称"
+                              />
+                            </Item>
+                          }
+                          key={`${collapseItem.fieldKey}`}
+                        >
+                          <Item
+                            rules={[
+                              {
+                                required: true,
+                                message: '请填写网关地址',
+                              },
+                            ]}
+                            {...layout}
+                            label="网关地址"
+                            name={[collapseItem.fieldKey, 'outsideHost']}
+                          >
+                            <Input placeholder="请填写网关地址" />
+                          </Item>
+                          <Item
+                            style={{ position: 'absolute' }}
+                            initialValue="NONE"
+                            {...layout}
+                            name={[collapseIndex, 'type']}
+                          >
+                            <Input hidden />
+                          </Item>
+                          <List
+                            {...layout}
+                            name={[collapseIndex, 'protocolSupport']}
+                          >
+                            {(fields, { add, remove }) => (
+                              <>
+                                {fields.map(routerItem => (
+                                  <Row
+                                    style={{ width: '100%' }}
+                                    key={routerItem.key}
+                                  >
+                                    <Item
+                                      style={{ width: '40%' }}
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message: '请选择',
+                                        },
+                                      ]}
+                                      {...routerItemLayout}
+                                      label="protocol"
+                                      fieldKey={[
+                                        routerItem.fieldKey,
+                                        'protocol',
+                                      ]}
+                                      name={[routerItem.fieldKey, 'protocol']}
+                                    >
+                                      <Select>
+                                        <Select.Option value="SOFA">
+                                          SOFA
+                                        </Select.Option>
+                                        <Select.Option value="test">
+                                          test
+                                        </Select.Option>
+                                        <Select.Option value="GRPC">
+                                          GRPC
+                                        </Select.Option>
+                                      </Select>
+                                    </Item>
+                                    <Item
+                                      style={{ width: '40%' }}
+                                      rules={[
+                                        {
+                                          required: true,
+                                          message: '请填写',
+                                        },
+                                      ]}
+                                      {...routerItemLayout}
+                                      label="port"
+                                      fieldKey={[routerItem.fieldKey, 'port']}
+                                      name={[routerItem.fieldKey, 'port']}
+                                    >
+                                      <Input />
+                                    </Item>
+                                    <Item>
+                                      <DeleteOutlined
+                                        onClick={() => remove(routerItem.name)}
+                                      />
+                                    </Item>
+                                  </Row>
+                                ))}
+                                <Button
+                                  type="dashed"
+                                  style={{ marginTop: 8, width: '50%' }}
+                                  onClick={() => add()}
+                                >
+                                  添加
+                                </Button>
+                              </>
+                            )}
+                          </List>
+                        </Panel>
+                      </Collapse>
+                    ))}
+                    <Button
+                      type="dashed"
+                      style={{ marginTop: 8, width: '100%' }}
+                      onClick={() =>
+                        add({
+                          protocolSupport: [{}],
+                        })
+                      }
+                    >
+                      添加
+                    </Button>
+                  </>
+                )}
+              </List>
+            </TabPane>
+          ))}
+        </Tabs>
       </Form>
-      {console.log(testData)}
+      <Button
+        type="primary"
+        style={{ marginTop: 8, width: '100%' }}
+        onClick={submit}
+      >
+        提交
+      </Button>
+      {Object.keys(params).length > 0 && (
+        <pre>{JSON.stringify(params, null, '\t')}</pre>
+      )}
     </>
   );
 };
+
 export default EditTable;

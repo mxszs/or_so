@@ -12,6 +12,10 @@ const routes = [
   },
   {
     "path": "/_demos/index-2",
+    "component": require('../../myDemo/ImportFile/index.tsx').default
+  },
+  {
+    "path": "/_demos/index-3",
     "component": require('../../myDemo/Graph/index.tsx').default
   },
   {
@@ -25,10 +29,6 @@ const routes = [
   {
     "path": "/_demos/radio-button",
     "component": require('../../myDemo/Form/RadioButton.tsx').default
-  },
-  {
-    "path": "/_demos/index-3",
-    "component": require('../../myDemo/ImportFile/index.tsx').default
   },
   {
     "path": "/",
@@ -131,7 +131,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/ImportFile.md",
-          "updatedTime": null,
+          "updatedTime": 1590420619000,
           "title": "导入 && 导出",
           "slugs": [
             {
@@ -400,7 +400,7 @@ const routes = [
         "exact": true,
         "meta": {
           "filePath": "docs/components/ImportFile.md",
-          "updatedTime": null,
+          "updatedTime": 1590420619000,
           "title": "导入 && 导出",
           "slugs": [
             {
