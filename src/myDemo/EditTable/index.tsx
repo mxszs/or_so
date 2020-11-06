@@ -14,7 +14,7 @@ import {
 import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
 import { TabsProps } from 'antd/lib/tabs';
 import { useDynamicList } from 'ahooks';
-import { testData } from './testData';
+import { editData } from './testData';
 
 type Props = {};
 
@@ -49,8 +49,9 @@ const defaultList = [
 
 const EditTable: React.FC<Props> = () => {
   const [params, setParams] = useState({});
+  const [editStatus, setEditStatus] = useState(false);
 
-  const { list, push, remove, getKey } = useDynamicList(defaultList);
+  const { list, push, remove, getKey, resetList } = useDynamicList(defaultList);
 
   const [form] = Form.useForm();
 
@@ -60,17 +61,19 @@ const EditTable: React.FC<Props> = () => {
       console.log(values, 'form');
       const gatewayList: any = [];
       values.gatewayList.forEach((item: any) => {
-        item.routers.forEach((wayItem: any) => {
-          gatewayList.push({
-            zone: item.zone,
-            name: wayItem.outsideName,
-            host: wayItem.outsideHost,
-            routers: {
-              protocolSupport: wayItem.protocolSupport,
-              type: wayItem.type,
-            },
+        item.routers
+          .filter(item => item)
+          .forEach((wayItem: any) => {
+            gatewayList.push({
+              zone: item.zone,
+              name: wayItem.outsideName,
+              host: wayItem.outsideHost,
+              routers: {
+                protocolSupport: wayItem.protocolSupport,
+                type: wayItem.type,
+              },
+            });
           });
-        });
       });
       const params = {
         configKey: 'test',
@@ -84,9 +87,10 @@ const EditTable: React.FC<Props> = () => {
   };
   // 设置初值
   useEffect(() => {
-    if (!testData) {
+    if (editStatus) {
+      resetList(editData);
       const gatewayList: any = [];
-      testData.forEach(item => {
+      editData.forEach(item => {
         const routers: any = [];
         item.routers.forEach(routerItem =>
           routers.push({
@@ -100,17 +104,14 @@ const EditTable: React.FC<Props> = () => {
           zone: item.zone,
           routers,
         });
-        // item.routers.forEach(routeItem => {
-        //   gatewayList.push({
-        //     zone: item.zone,
-        //   })
       });
-
       form.setFieldsValue({ gatewayList: gatewayList });
     } else {
       form.setFieldsValue({ gatewayList: defaultList });
+      resetList(defaultList);
     }
-  }, []);
+  }, [editStatus]);
+
   // 添加TabPane
   const addTabPane = () => {
     push({
@@ -145,6 +146,13 @@ const EditTable: React.FC<Props> = () => {
 
   return (
     <>
+      <Button
+        style={{ marginBottom: 8 }}
+        type="primary"
+        onClick={() => setEditStatus(!editStatus)}
+      >
+        切换{editStatus ? '新增' : '编辑'}
+      </Button>
       <Form {...layout} labelCol={{ span: 2 }} form={form}>
         <Tabs
           type="editable-card"
@@ -153,6 +161,7 @@ const EditTable: React.FC<Props> = () => {
         >
           {list.map((item, index) => (
             <TabPane
+              forceRender
               key={`${getKey(index)}`}
               closeIcon={<CloseOutlined onClick={() => remove(index)} />}
               tab={`Zone ${getKey(index)}`}
@@ -204,7 +213,8 @@ const EditTable: React.FC<Props> = () => {
                               ]}
                               {...routerItemLayout}
                               label="网关名称"
-                              name={[collapseItem.fieldKey, 'outsideName']}
+                              name={[collapseItem.name, 'outsideName']}
+                              fieldKey={[collapseItem.fieldKey, 'outsideName']}
                             >
                               <Input
                                 placeholder="请填写网关名称"
@@ -224,7 +234,8 @@ const EditTable: React.FC<Props> = () => {
                             ]}
                             {...layout}
                             label="网关地址"
-                            name={[collapseItem.fieldKey, 'outsideHost']}
+                            name={[collapseItem.name, 'outsideHost']}
+                            fieldKey={[collapseItem.fieldKey, 'outsideHost']}
                           >
                             <Input placeholder="请填写网关地址" />
                           </Item>

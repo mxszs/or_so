@@ -81,7 +81,7 @@ const value = {
 };
 console.log(value, 'newData');
 
-export const testData = [
+export const editData = [
   {
     zone: 'hz',
     name: 'hz-http-proxy',
