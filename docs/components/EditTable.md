@@ -1,7 +1,7 @@
 ---
-title: 可编辑表单表格
+title: 复杂表单
 ---
 
-### 表单表格
+### 表单组件
 
 <code src="@/myDemo/EditTable" />

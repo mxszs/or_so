@@ -1,7 +1,7 @@
 const Test = [
   {
     id: 1209,
-    name: 'test',
+    teamName: 'test',
     enble: 1,
     authGroupId: 1996,
     type: 'fild',
@@ -10,7 +10,7 @@ const Test = [
   },
   {
     id: 1208,
-    name: 'test',
+    teamName: 'test',
     enble: 1,
     authGroupId: 1996,
     type: 'fild',
@@ -19,7 +19,7 @@ const Test = [
   },
   {
     id: 3056,
-    name: 'test',
+    teamName: 'test',
     enble: 0,
     authGroupId: 2030,
     type: 'fild',
@@ -28,7 +28,7 @@ const Test = [
   },
   {
     id: 30526,
-    name: 'test',
+    teamName: 'test',
     enble: 0,
     authGroupId: 2030,
     type: 'fild',
@@ -37,7 +37,7 @@ const Test = [
   },
   {
     id: 30256,
-    name: 'test',
+    teamName: 'test',
     enble: 0,
     authGroupId: 20230,
     type: 'fild',
@@ -83,109 +83,94 @@ console.log(value, 'newData');
 
 export const editData = [
   {
-    zone: 'hz',
-    name: 'hz-http-proxy',
-    tenantId: 'JADDGOCN',
-    host: 'aaaaa',
+    class: 'class1',
+    teamName: 'class1-team1',
+    teamPosition: 'aaaaa',
     id: 'vRZSjfDDDBndTeGx',
-    routers: [
+    teams: [
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
-          { port: '12222' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
+          { column: '12222' },
         ],
-        host: 'hz.sofaregistry.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'test1',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        host: 'hz.SOFA_REGISTERY.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'test2',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        type: 'NONE',
+        teamPosition: 'test3',
       },
     ],
-    gatewayId: 'hz#aaaaa',
-    workspaceId: 'antdemo',
   },
   {
-    zone: 'sh',
-    name: 'sh-http-proxy',
-    tenantId: 'JADDGOCN',
-    host: 'bbbbb',
+    class: 'class2',
+    teamName: 'class2-team1',
+    teamPosition: 'bbbbb',
     id: '4XuIiPRjKMQFpI53',
-    routers: [
+    teams: [
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
-          { port: '12222' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
+          { column: '12222' },
         ],
-        host: 'sh.sofaregistry.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'bbb1',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        host: 'sh.SOFA_REGISTERY.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'bbb2',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        type: 'NONE',
+        teamPosition: 'bbb3',
       },
     ],
-    gatewayId: 'sh#bbbbb',
-    workspaceId: 'antdemo',
   },
   {
-    zone: 'shp',
-    name: 'sz-http-proxy',
-    tenantId: 'JADDGOCN',
-    host: 'ccccc',
+    class: 'calss3',
+    teamName: 'calss3-team1',
+    teamPosition: 'ccccc',
     id: '3o3ZCXdLaEXChDl8',
-    routers: [
+    teams: [
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
-          { port: '12222' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
+          { column: '12222' },
         ],
-        host: 'sz.sofaregistry.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'ccc1',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        host: 'sz.SOFA_REGISTERY.com',
-        type: 'SOFA_REGISTERY',
+        teamPosition: 'ccc2',
       },
       {
-        protocolSupport: [
-          { protocol: 'HTTP', port: '80' },
-          { protocol: 'SOFARPC', port: '12200' },
+        axis: [
+          { row: 'one', column: '80' },
+          { row: 'two', column: '12200' },
         ],
-        type: 'NONE',
+        teamPosition: 'ccc3',
       },
     ],
-    gatewayId: 'shp#ccccc',
-    workspaceId: 'antdemo',
   },
 ];
 
