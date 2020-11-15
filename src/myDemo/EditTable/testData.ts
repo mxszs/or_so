@@ -83,8 +83,8 @@ console.log(value, 'newData');
 
 export const editData = [
   {
-    class: 'hz',
-    teamName: 'hz-http-proxy',
+    class: 'class1',
+    teamName: 'class1-team1',
     teamPosition: 'aaaaa',
     id: 'vRZSjfDDDBndTeGx',
     teams: [
@@ -113,8 +113,8 @@ export const editData = [
     ],
   },
   {
-    class: 'sh',
-    teamName: 'sh-http-proxy',
+    class: 'class2',
+    teamName: 'class2-team1',
     teamPosition: 'bbbbb',
     id: '4XuIiPRjKMQFpI53',
     teams: [
@@ -143,8 +143,8 @@ export const editData = [
     ],
   },
   {
-    class: 'shp',
-    teamName: 'sz-http-proxy',
+    class: 'calss3',
+    teamName: 'calss3-team1',
     teamPosition: 'ccccc',
     id: '3o3ZCXdLaEXChDl8',
     teams: [

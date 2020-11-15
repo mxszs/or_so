@@ -5,8 +5,6 @@ import { useDynamicList } from 'ahooks';
 import { editData } from './testData';
 import FormList from './FormList';
 
-type Props = {};
-
 type AxisItem = {
   row?: string;
   column?: string;
@@ -63,7 +61,7 @@ const defaultList = [
   },
 ];
 
-const EditTable: React.FC<Props> = () => {
+const EditForm: React.FC = () => {
   const [params, setParams] = useState({});
   const [editStatus, setEditStatus] = useState<boolean>(false);
 
@@ -157,10 +155,6 @@ const EditTable: React.FC<Props> = () => {
     labelCol: { span: 2 },
     wrapperCol: { span: 14 },
   };
-  const routerItemLayout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 16 },
-  };
 
   return (
     <>
@@ -216,4 +210,4 @@ const EditTable: React.FC<Props> = () => {
   );
 };
 
-export default EditTable;
+export default EditForm;
