@@ -12,9 +12,9 @@ type AxisFormListProps = {
 };
 
 type AxisItem = {
-    row: string;
-    column: string;
-}
+  row: string;
+  column: string;
+};
 
 const { Item, List } = Form;
 const { Panel } = Collapse;
@@ -27,8 +27,6 @@ const routerItemLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 16 },
 };
-
-
 
 const AxisFormList: React.FC<AxisFormListProps> = ({
   parentIndex,
@@ -49,24 +47,25 @@ const AxisFormList: React.FC<AxisFormListProps> = ({
                   },
                   ({ getFieldValue }) => ({
                     validator(rule, value) {
-                        // 自定义校验名称重复
-                        if (!value) {
-                            return Promise.resolve();
-                        }
+                      // 自定义校验名称重复
+                      if (!value) {
+                        return Promise.resolve();
+                      }
                       const axis = getFieldValue([
-                          'grades',
-                      parentIndex,
-                      'teams',
-                      collapseIndex,
-                      'axis']).map((item: AxisItem) => item.row) as string[];
-                      const index = axis.findIndex(item => item === value)
-                      axis.splice(index, 1)
+                        'grades',
+                        parentIndex,
+                        'teams',
+                        collapseIndex,
+                        'axis',
+                      ]).map((item: AxisItem) => item.row) as string[];
+                      const index = axis.findIndex(item => item === value);
+                      axis.splice(index, 1);
                       let infoPromise = Promise.resolve();
                       axis.forEach((checkItem: string) => {
-                          if (checkItem === value) {
-                            infoPromise = Promise.reject('排名称重复');
-                          }
-                      })
+                        if (checkItem === value) {
+                          infoPromise = Promise.reject('排名称重复');
+                        }
+                      });
                       return infoPromise;
                     },
                   }),
@@ -75,7 +74,7 @@ const AxisFormList: React.FC<AxisFormListProps> = ({
                 label="排"
                 initialValue=""
                 fieldKey={[routerItem.fieldKey, 'row']}
-                name={[routerItem.fieldKey, 'row']}
+                name={[routerItem.name, 'row']}
               >
                 <Select>
                   <Select.Option value="one">第一排</Select.Option>
@@ -92,7 +91,7 @@ const AxisFormList: React.FC<AxisFormListProps> = ({
                       'teams',
                       collapseIndex,
                       'axis',
-                      routerItem.fieldKey,
+                      routerItem.name,
                       'row',
                     ]) === 'three';
                   return (
@@ -107,11 +106,9 @@ const AxisFormList: React.FC<AxisFormListProps> = ({
                       {...routerItemLayout}
                       label="列"
                       fieldKey={[routerItem.fieldKey, 'column']}
-                      name={[routerItem.fieldKey, 'column']}
+                      name={[routerItem.name, 'column']}
                     >
-                      <Input
-                        disabled={getDefaultValue}
-                      />
+                      <Input disabled={getDefaultValue} />
                     </Item>
                   );
                 }}
