@@ -1,45 +1,50 @@
-import { ApplyPluginsType } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.0.18@@umijs/runtime/dist/index.js';
+// @ts-nocheck
+import React from 'react';
+import { ApplyPluginsType } from '/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_runtime@3.3.3@@umijs/runtime';
+import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
-const routes = [
+export function getRoutes() {
+  const routes = [
   {
-    "path": "/_demos/index",
-    "component": require('../../myDemo/EditGraph/index.tsx').default
+    "path": "/~demos/:uuid",
+    "layout": false,
+    "wrappers": [require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.1.0@@umijs/preset-dumi/lib/theme/layout').default],
+    "component": (props) => {
+      const React = require('react');
+      const renderArgs = require('../../../node_modules/_@umijs_preset-dumi@1.1.0@@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs').default(props);
+
+      switch (renderArgs.length) {
+        case 1:
+          // render demo directly
+          return renderArgs[0];
+
+        case 2:
+          // render demo with previewer
+          return React.createElement(
+            require('dumi-theme-default/src/builtins/Previewer.tsx').default,
+            renderArgs[0],
+            renderArgs[1],
+          );
+
+        default:
+          return `Demo ${uuid} not found :(`;
+      }
+    }
   },
   {
-    "path": "/_demos/index-1",
-    "component": require('../../myDemo/EditTable/index.tsx').default
+    "path": "/_demos/:uuid",
+    "redirect": "/~demos/:uuid"
   },
   {
-    "path": "/_demos/index-2",
-    "component": require('../../myDemo/ImportFile/index.tsx').default
-  },
-  {
-    "path": "/_demos/index-3",
-    "component": require('../../myDemo/Graph/index.tsx').default
-  },
-  {
-    "path": "/_demos/test-event-bus",
-    "component": require('../../../docs/components/TestEventBus.tsx').default
-  },
-  {
-    "path": "/_demos/event-bus",
-    "component": require('../../../docs/components/EventBus.tsx').default
-  },
-  {
-    "path": "/_demos/radio-button",
-    "component": require('../../myDemo/Form/RadioButton.tsx').default
-  },
-  {
+    "__dumiRoot": true,
+    "layout": false,
     "path": "/",
-    "component": (props) => require('react').createElement(require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.0.13@@umijs/preset-dumi/lib/themes/default/layout.js').default, {
-      ...{"menus":{"en-US":{"*":[{"path":"/","title":"or_so","meta":{}}],"/components":[{"path":"/components/test","title":"事件总线","meta":{}},{"path":"/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/components/radio","meta":{},"children":[{"path":"/components/radio","title":"表单","meta":{}}]},{"path":"/components/edit-table","title":"复杂表单","meta":{}},{"path":"/components/edit-graph","title":"流程图编辑器","meta":{}},{"path":"/components/import-file","title":"导入 && 导出","meta":{}}],"/doc":[{"path":"/doc","title":"标题内容","meta":{}},{"path":"/doc/description","title":"描述","meta":{}}],"/guide":[{"path":"/guide","title":"标题内容","meta":{}}]},"zh-CN":{"/zh-CN/guide":[{"path":"/zh-CN/guide","title":"标题内容","meta":{}}],"*":[{"path":"/zh-CN","title":"or_so","meta":{}}],"/zh-CN/components":[{"path":"/zh-CN/components/test","title":"事件总线","meta":{}},{"path":"/zh-CN/components/saga","title":"流程图查看","meta":{}},{"title":"单选按钮","path":"/zh-CN/components/radio","meta":{},"children":[{"path":"/zh-CN/components/radio","title":"表单","meta":{}}]},{"path":"/zh-CN/components/edit-table","title":"复杂表单","meta":{}},{"path":"/zh-CN/components/edit-graph","title":"流程图编辑器","meta":{}},{"path":"/zh-CN/components/import-file","title":"导入 && 导出","meta":{}}],"/zh-CN/doc":[{"path":"/zh-CN/doc","title":"标题内容","meta":{}},{"path":"/zh-CN/doc/description","title":"描述","meta":{}}]}},"locales":[{"name":"en-US","label":"English"},{"name":"zh-CN","label":"中文"}],"navs":{"en-US":[{"path":"/doc","title":"文档"},{"title":"指南","path":"/guide"},{"path":"/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}],"zh-CN":[{"path":"/zh-CN/doc","title":"文档"},{"title":"指南","path":"/zh-CN/guide"},{"path":"/zh-CN/components","title":"组件"},{"title":"GitHub","path":"https://github.com/mxszs"}]},"title":"or_so","logo":"https://avatars2.githubusercontent.com/u/33783716?s=60&v=4","mode":"site"},
-      ...props,
-    }),
+    "wrappers": [require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.1.0@@umijs/preset-dumi/lib/theme/layout').default, require('/Users/orso/Desktop/learn/MyDoc/node_modules/_@umijs_preset-dumi@1.1.0@@umijs/preset-dumi/node_modules/dumi-theme-default/src/layout.tsx').default],
     "routes": [
       {
         "path": "/",
-        "component": require('../../../docs/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
@@ -79,7 +84,7 @@ const routes = [
       },
       {
         "path": "/components/edit-graph",
-        "component": require('../../../docs/components/EditGraph.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/EditGraph.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
@@ -105,11 +110,11 @@ const routes = [
       },
       {
         "path": "/components/edit-table",
-        "component": require('../../../docs/components/EditTable.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/EditTable.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditTable.md",
-          "updatedTime": 1588007557000,
+          "updatedTime": 1605449005000,
           "title": "复杂表单",
           "slugs": [
             {
@@ -127,7 +132,7 @@ const routes = [
       },
       {
         "path": "/components/import-file",
-        "component": require('../../../docs/components/ImportFile.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/ImportFile.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/ImportFile.md",
@@ -149,7 +154,7 @@ const routes = [
       },
       {
         "path": "/components/saga",
-        "component": require('../../../docs/components/Saga.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/Saga.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/Saga.md",
@@ -175,7 +180,7 @@ const routes = [
       },
       {
         "path": "/components/test",
-        "component": require('../../../docs/components/test.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/test.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/test.md",
@@ -202,7 +207,7 @@ const routes = [
       },
       {
         "path": "/components/radio",
-        "component": require('../../../docs/components/Radio/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/Radio/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
@@ -228,7 +233,7 @@ const routes = [
       },
       {
         "path": "/doc/description",
-        "component": require('../../../docs/doc/description.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/description.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/doc/description.md",
@@ -250,7 +255,7 @@ const routes = [
       },
       {
         "path": "/doc",
-        "component": require('../../../docs/doc/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/doc/index.md",
@@ -265,8 +270,25 @@ const routes = [
         "title": "标题内容"
       },
       {
+        "path": "/doc/share",
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/share.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/doc/share.md",
+          "updatedTime": 1609673980000,
+          "title": "开发小技巧",
+          "nav": {
+            "title": "文档",
+            "order": 1,
+            "path": "/doc"
+          },
+          "slugs": []
+        },
+        "title": "开发小技巧"
+      },
+      {
         "path": "/guide",
-        "component": require('../../../docs/guide/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/guide/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/index.md",
@@ -288,7 +310,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/guide",
-        "component": require('../../../docs/guide/index.zh-CN.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/guide/index.zh-CN.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/index.zh-CN.md",
@@ -305,7 +327,7 @@ const routes = [
       },
       {
         "path": "/zh-CN",
-        "component": require('../../../docs/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
@@ -346,7 +368,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/edit-graph",
-        "component": require('../../../docs/components/EditGraph.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/EditGraph.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditGraph.md",
@@ -373,11 +395,11 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/edit-table",
-        "component": require('../../../docs/components/EditTable.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/EditTable.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/EditTable.md",
-          "updatedTime": 1588007557000,
+          "updatedTime": 1605449005000,
           "title": "复杂表单",
           "slugs": [
             {
@@ -396,7 +418,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/import-file",
-        "component": require('../../../docs/components/ImportFile.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/ImportFile.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/ImportFile.md",
@@ -419,7 +441,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/saga",
-        "component": require('../../../docs/components/Saga.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/Saga.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/Saga.md",
@@ -446,7 +468,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/test",
-        "component": require('../../../docs/components/test.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/test.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/test.md",
@@ -474,7 +496,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/components/radio",
-        "component": require('../../../docs/components/Radio/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/components/Radio/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/components/Radio/index.md",
@@ -501,7 +523,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/doc/description",
-        "component": require('../../../docs/doc/description.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/description.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/doc/description.md",
@@ -524,7 +546,7 @@ const routes = [
       },
       {
         "path": "/zh-CN/doc",
-        "component": require('../../../docs/doc/index.md').default,
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/doc/index.md",
@@ -540,27 +562,47 @@ const routes = [
         "title": "标题内容"
       },
       {
+        "path": "/zh-CN/doc/share",
+        "component": require('/Users/orso/Desktop/learn/MyDoc/docs/doc/share.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/doc/share.md",
+          "updatedTime": 1609673980000,
+          "title": "开发小技巧",
+          "nav": {
+            "title": "文档",
+            "order": 1,
+            "path": "/zh-CN/doc"
+          },
+          "slugs": [],
+          "locale": "zh-CN"
+        },
+        "title": "开发小技巧"
+      },
+      {
         "path": "/components",
         "meta": {},
         "exact": true,
-        "redirect": "/components/test"
+        "redirect": "/components/edit-graph"
       },
       {
         "path": "/zh-CN/components",
         "meta": {},
         "exact": true,
-        "redirect": "/zh-CN/components/test"
+        "redirect": "/zh-CN/components/edit-graph"
       }
     ],
-    "title": "or_so"
+    "title": "or_so",
+    "component": (props) => props.children
   }
 ];
 
-// allow user to extend routes
-plugin.applyPlugins({
-  key: 'patchRoutes',
-  type: ApplyPluginsType.event,
-  args: { routes },
-});
+  // allow user to extend routes
+  plugin.applyPlugins({
+    key: 'patchRoutes',
+    type: ApplyPluginsType.event,
+    args: { routes },
+  });
 
-export { routes };
+  return routes;
+}

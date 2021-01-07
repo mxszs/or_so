@@ -2,7 +2,7 @@ import G6 from '@antv/g6';
 import { ModelConfig, IPoint } from '@antv/g6/lib/types';
 import GGroup from '@antv/g-canvas/lib/group';
 import G from '@antv/g';
-import { NodeType } from '@/@types/NodeType';
+import { NodeType } from 'or_so/src/@types/NodeType';
 
 const BASE_NODEWIDTH = 180;
 const BASE_NODEHEIGHT = 50;

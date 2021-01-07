@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import EventBus from '@/myDemo/util/eventBus';
+import EventBus from 'or_so/src/myDemo/util/eventBus';
 
 const Test = () => {
   const [state, setState] = React.useState();

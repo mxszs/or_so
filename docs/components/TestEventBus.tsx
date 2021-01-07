@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
-import EventBus from '@/myDemo/util/eventBus';
-import { debounce, throttle } from '@/myDemo/util';
+import EventBus from 'or_so/src/myDemo/util/eventBus';
+import { debounce, throttle } from 'or_so/src/myDemo/util';
 
 const Test = () => {
   let i = 1;

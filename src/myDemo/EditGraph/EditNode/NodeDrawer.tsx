@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Form, Input } from 'antd';
-import NodeDrawer from '@/components/NodeDrawer';
+import NodeDrawer from 'or_so/src/components/NodeDrawer';
 import { graphContext } from '../Graph/graphContext';
-import { InitState } from '@/@types/NodeType';
-import { setTitleText } from '@/myDemo/EditGraph/EditNode';
+import { InitState } from 'or_so/src/@types/NodeType';
+import { setTitleText } from 'or_so/src/myDemo/EditGraph/EditNode';
 
 interface EditGraphInitState extends InitState {}
 

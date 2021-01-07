@@ -81,4 +81,71 @@ FLAG && console.log('xxx');
 
 ![xx](https://cdn.nlark.com/yuque/0/2021/png/216243/1609665433147-eb74c863-7b5c-4716-af65-6528bd2bba23.png)
 
-<code src="@/myDemo/Share" />
+<code src="or_so/src/myDemo/Share" />
+
+```js
+// Boolean
+!!Boolean;
+// 创建mock 数据
+new Array(10).fill(0).map(xx);
+```
+
+> 自定义代码片段
+
+vscode
+ES7 React/Redux/GraphQL/React-Native snippets
+插件
+
+```json
+{
+  "create react component": {
+    "prefix": "creat component",
+    "body": [
+      "import React from 'react';",
+      "",
+      "type $0Props = {",
+      "",
+      "}",
+      "",
+      "const $0:React.FC<$0Props> = () => {",
+      "",
+      "  return (",
+      "    <>111</>",
+      "  )",
+      "}",
+      "export default $0;"
+    ],
+    "description": "import react"
+  }
+}
+```
+
+```js
+// 快速切割字符串
+[...'xxx']; // 只限于空
+
+// 创建、编辑
+const body = {
+  userId: 'xxx',
+  userName: 'xxx',
+  // ...
+};
+// 编辑有时候加个id
+id && Object.assgin(body, { id });
+
+//
+const updateBody = {
+  id: 'xx',
+  userId: 'xxx',
+  userName: 'xxx',
+};
+// createBody 创建
+const { id, ...createBody } = updateBody;
+
+// 发请求，某个参数是可变的
+
+const res = async type => {
+  const paramType = type ? type : undefined;
+  const { data } = await fetch(`xxx?JSON.stringify({a: 1, b: paramType })`);
+};
+```

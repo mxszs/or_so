@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Form, Input, Select } from 'antd';
-import NodeDrawer from '@/components/NodeDrawer';
-import { setTitleText } from '@/myDemo/EditGraph/EditNode';
+import NodeDrawer from 'or_so/src/components/NodeDrawer';
+import { setTitleText } from 'or_so/src/myDemo/EditGraph/EditNode';
 import { IEdge } from '@antv/g6/lib/interface/item';
-import { InitState } from '@/@types/NodeType';
+import { InitState } from 'or_so/src/@types/NodeType';
 import { graphContext } from '../Graph/graphContext';
 
 interface AddNodeState extends InitState {}
