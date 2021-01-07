@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dumi-lib",
+  "name": "or_so",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

@@ -1,8 +1,8 @@
 import React, { createContext, useRef } from 'react';
-import { NodeType } from '@/@types/NodeType';
+import { NodeType } from 'or_so/src/@types/NodeType';
 
 import { Graph } from '@antv/g6';
-import eventBus from '@/myDemo/util/eventBus';
+import eventBus from 'or_so/src/myDemo/util/eventBus';
 
 export const graphContext = createContext<NodeType.graphContextType>(null);
 

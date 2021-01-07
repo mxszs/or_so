@@ -6,4 +6,4 @@ group:
 
 ### 单选框表单
 
-<code src="@/myDemo/Form/RadioButton" />
+<code src="or_so/src/myDemo/Form/RadioButton" />
