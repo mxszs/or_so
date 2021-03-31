@@ -79,7 +79,6 @@ const value = {
   enble: data.enble,
   rules: rules,
 };
-console.log(value, 'newData');
 
 export const editData = [
   {

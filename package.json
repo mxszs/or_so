@@ -24,6 +24,12 @@
       "prettier --parser=typescript --write"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxszs/or_so.git",
+    "branch": "master",
+    "platform": "github"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@antv/g": "^3.4.7",

@@ -6,8 +6,8 @@ nav:
 
 ### 触发事件
 
-<code src="./TestEventBus" />
+<code src="or_so/src/myDemo/EventBus/TestEventBus" />
 
 ### 展示 移除事件
 
-<code src="./EventBus" />
+<code src="or_so/src/myDemo/EventBus" />

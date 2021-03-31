@@ -1,7 +1,5 @@
 ---
 title: useSetState
-nav:
-  title: 组件
 ---
 
 ### 模拟类组件 this.setState
