@@ -9,13 +9,14 @@ type State = {
 };
 
 export default () => {
+  // const {  } = useModel('init')
   const [state, setState] = useSetState<State>({
     hello: '',
     count: 0,
   });
 
   return (
-    <div>
+    <>
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <Space>
         <Button onClick={() => setState({ hello: 'hello' })}>say hello</Button>
@@ -24,6 +25,6 @@ export default () => {
           count + 1
         </Button>
       </Space>
-    </div>
+    </>
   );
 };

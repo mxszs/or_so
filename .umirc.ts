@@ -11,14 +11,10 @@ export default defineConfig({
     type: 'hash',
   },
   publicPath: './',
-  // menus: {
-  //   '/guide': [
-  //     {
-  //       title: '介绍',
-  //       children: ['guide/index'],
-  //     },
-  //   ],
-  // },
+  locales: [
+    ['zh-CN', '中文'],
+    ['en-US', 'English'],
+  ],
   extraBabelPlugins: [
     [
       'import',
