@@ -94,6 +94,7 @@ const defaultEdge = () => {
       inherit: 'edge',
       tools: [commonTools, buttonRemove],
     },
+    true,
   );
 };
 export { defaultEdge };
