@@ -1,6 +1,7 @@
 #container {
   display: flex;
   border: 1px solid #dfe3e8;
+  position: relative;
   #stencil {
     width: 180px;
     height: 100%;
@@ -10,6 +11,12 @@
   #graph-container {
     width: calc(100% - 180px);
     height: 100%;
+  }
+  #minimap {
+    overflow: hidden;
+    border: 1px solid #dfe3e8;
+    position: absolute;
+    right: 0;
   }
 }
 .x6-widget-stencil {

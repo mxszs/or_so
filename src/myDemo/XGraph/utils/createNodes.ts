@@ -1,5 +1,6 @@
 import { Graph } from '@antv/x6/lib/graph';
 import register from './register';
+import { defaultEdge } from './createEdges';
 const imageShapes = [
   {
     label: 'Client',
@@ -36,19 +37,26 @@ const imageShapes = [
 const createNode = (graph: Graph) => {
   // 初始化图形
   register();
+  defaultEdge();
   const r1 = graph.createNode({
     shape: 'custom-rect',
-    label: '开始',
     attrs: {
       body: {
         rx: 20,
         ry: 26,
       },
+      label: {
+        text: '过程',
+      },
     },
   });
   const r2 = graph.createNode({
     shape: 'custom-rect',
-    label: '过程',
+    attrs: {
+      label: {
+        text: '过程',
+      },
+    },
   });
   const r3 = graph.createNode({
     shape: 'custom-rect',
@@ -57,8 +65,10 @@ const createNode = (graph: Graph) => {
         rx: 6,
         ry: 6,
       },
+      label: {
+        text: '可选过程',
+      },
     },
-    label: '可选过程',
   });
   const r4 = graph.createNode({
     shape: 'custom-polygon',
@@ -66,8 +76,10 @@ const createNode = (graph: Graph) => {
       body: {
         refPoints: '0,10 10,0 20,10 10,20',
       },
+      label: {
+        text: '决策',
+      },
     },
-    label: '决策',
   });
   const r5 = graph.createNode({
     shape: 'custom-polygon',
@@ -75,20 +87,28 @@ const createNode = (graph: Graph) => {
       body: {
         refPoints: '10,0 40,0 30,20 0,20',
       },
+      label: {
+        text: '数据',
+      },
     },
-    label: '数据',
   });
   const r6 = graph.createNode({
     shape: 'custom-circle',
-    label: '连接',
+    attrs: {
+      label: {
+        text: '连接',
+      },
+    },
   });
   const imageNodes = imageShapes.map(item =>
     graph.createNode({
       shape: 'custom-image',
-      label: item.label,
       attrs: {
         image: {
           'xlink:href': item.image,
+        },
+        label: {
+          text: item.label,
         },
       },
     }),

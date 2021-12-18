@@ -1,6 +1,6 @@
 import { Graph } from '@antv/x6';
 // #region 初始化图形
-const ports = {
+export const ports = {
   groups: {
     top: {
       position: 'top',
@@ -65,15 +65,19 @@ const ports = {
   },
   items: [
     {
+      id: 'top',
       group: 'top',
     },
     {
+      id: 'right',
       group: 'right',
     },
     {
+      id: 'bottom',
       group: 'bottom',
     },
     {
+      id: 'left',
       group: 'left',
     },
   ],

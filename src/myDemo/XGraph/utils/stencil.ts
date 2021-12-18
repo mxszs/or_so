@@ -6,7 +6,7 @@ const stencil = (graph: Graph) => {
   return new Addon.Stencil({
     title: '流程图',
     target: graph,
-    stencilGraphWidth: 200,
+    stencilGraphWidth: 180,
     stencilGraphHeight: 180,
     collapsable: true,
     groups: [
@@ -17,10 +17,6 @@ const stencil = (graph: Graph) => {
       {
         title: '系统设计图',
         name: 'group2',
-        graphHeight: 200,
-        layoutOptions: {
-          rowHeight: 70,
-        },
       },
       {
         title: '测试设计图',
@@ -29,7 +25,7 @@ const stencil = (graph: Graph) => {
     ],
     layoutOptions: {
       columns: 2,
-      columnWidth: 80,
+      columnWidth: 75,
       rowHeight: 55,
     },
   });

@@ -1,14 +1,18 @@
-import { Graph, Shape } from '@antv/x6';
+import { Graph } from '@antv/x6';
 import React, { useEffect, useRef, useState } from 'react';
+import { Button, Space } from 'antd';
+import { Graph as GraphType } from '@antv/x6/lib/graph';
+import { DagreLayout } from '@antv/layout';
 import addonStencil from './utils/stencil';
-import creatNode from './utils/creatNodes';
+import createNode from './utils/createNodes';
+import createEdge from './utils/createEdges';
 import bindKey from './utils/bindKey';
 import nodeEvent from './utils/nodeEvent';
 import OperationArea from './components/OperationArea';
 import EventBus from 'or_so/src/myDemo/util/eventBus';
-import { Graph as GraphType } from '@antv/x6/lib/graph';
 
 import './index.less';
+import Shape from '@antv/g6/lib/shape';
 
 type DoSetConfig = {
   data: {
@@ -21,7 +25,10 @@ const X6: React.FC = () => {
   const GraphRef = useRef<{ graph: GraphType }>({
     graph: {} as any,
   });
-  const [config, setConfig] = useState({
+  const [config, setConfig] = useState<{
+    visible: boolean;
+    data: any;
+  }>({
     visible: false,
     data: {},
   });
@@ -44,6 +51,26 @@ const X6: React.FC = () => {
         minScale: 0.5,
         maxScale: 3,
       },
+      scroller: {
+        enabled: true,
+      },
+      minimap: {
+        enabled: true,
+        container: document.getElementById('minimap')!,
+        scalable: false,
+        graphOptions: {
+          async: true,
+          connecting: {
+            router: 'manhattan',
+            connector: {
+              name: 'rounded',
+              args: {
+                radius: 8,
+              },
+            },
+          },
+        },
+      },
       connecting: {
         router: 'manhattan',
         connector: {
@@ -58,22 +85,7 @@ const X6: React.FC = () => {
         snap: {
           radius: 20,
         },
-        createEdge() {
-          return new Shape.Edge({
-            attrs: {
-              line: {
-                stroke: '#A2B1C3',
-                strokeWidth: 2,
-                targetMarker: {
-                  name: 'block',
-                  width: 12,
-                  height: 8,
-                },
-              },
-            },
-            zIndex: 0,
-          });
-        },
+        createEdge,
         validateConnection({ targetMagnet }) {
           return !!targetMagnet;
         },
@@ -108,7 +120,7 @@ const X6: React.FC = () => {
     nodeEvent(graph);
     // 快捷键
     bindKey(graph);
-    const groups = creatNode(graph);
+    const groups = createNode(graph);
     Object.entries(groups).forEach(item => {
       stencil.load(item[1], item[0]);
     });
@@ -119,11 +131,38 @@ const X6: React.FC = () => {
   useEffect(() => {
     renderGraph();
   }, []);
+
+  const layout = () => {
+    const dagreLayout = new DagreLayout({
+      type: 'dagre',
+      rankdir: 'TB',
+      ranksep: 40,
+      nodesep: 50,
+      controlPoints: true,
+    });
+    const data = {
+      nodes: GraphRef.current.graph
+        .toJSON()
+        .cells.filter(item => !Reflect.has(item, 'source')),
+      edges: GraphRef.current.graph
+        .toJSON()
+        .cells.filter(item => Reflect.has(item, 'source')),
+    };
+    const model = dagreLayout.layout(data);
+    GraphRef.current.graph.fromJSON(model);
+  };
+
   return (
-    <div style={{ height: 500 }} id="container">
-      <div id="stencil" />
-      <div id="graph-container" />
-      <OperationArea config={config} graph={GraphRef.current.graph} />
+    <div>
+      <Space style={{ padding: '8px 0' }}>
+        <Button onClick={layout}>布局</Button>
+      </Space>
+      <div style={{ height: 500 }} id="container">
+        <div id="stencil" />
+        <div id="graph-container" />
+        <div id="minimap" />
+        <OperationArea config={config} graph={GraphRef.current.graph} />
+      </div>
     </div>
   );
 };

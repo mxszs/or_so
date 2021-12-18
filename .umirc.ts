@@ -10,6 +10,10 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
+  webpack5: {},
+  dynamicImport: {
+    loading: '@/Loading',
+  },
   publicPath: './',
   locales: [
     ['zh-CN', '中文'],

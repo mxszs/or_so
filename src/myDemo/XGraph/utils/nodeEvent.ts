@@ -16,12 +16,61 @@ const nodeEvents = (graph: Graph) => {
     showPorts(ports, true);
   });
 
-  graph.on('cell:click', e => {
+  graph.on('node:click', e => {
     console.log(e, 'e');
     EventBus.dispatchEvent({
       type: 'config',
       data: { visible: true, data: e },
     });
+  });
+
+  graph.on('edge:mouseenter', () => {
+    const container = document.getElementById('graph-container')!;
+    const ports = container.querySelectorAll(
+      '.button-visibility',
+    ) as NodeListOf<SVGElement>;
+    showPorts(ports, true);
+  });
+
+  graph.on('edge:mouseleave', () => {
+    const container = document.getElementById('graph-container')!;
+    const ports = container.querySelectorAll(
+      '.button-visibility',
+    ) as NodeListOf<SVGElement>;
+    showPorts(ports, false);
+  });
+
+  // graph.on('edge:mouseenter', ({ edge }) => {
+  //   edge.addTools([
+  //     'target-arrowhead',
+  //     {
+  //       name: 'button-remove',
+  //       args: {
+  //         distance: -30,
+  //       },
+  //     },
+  //   ], {
+  //     reset: true
+  //   })
+  // })
+
+  // graph.on('edge:mouseleave', ({ edge }) => {
+  //   edge.removeTools()
+  // })
+
+  graph.on('node:mouseenter', ({ node }) => {
+    node.addTools({
+      name: 'button-remove',
+      args: {
+        x: 0,
+        y: 0,
+        offset: { x: 10, y: 10 },
+      },
+    });
+  });
+
+  graph.on('node:mouseleave', ({ node }) => {
+    node.removeTools();
   });
 
   graph.on('node:mouseleave', () => {
