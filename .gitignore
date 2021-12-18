@@ -16,3 +16,4 @@ page
 lerna-debug.log
 tsconfig.tsbuildinfo
 saga/
+src/.umi-production
