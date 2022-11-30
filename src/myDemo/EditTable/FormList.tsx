@@ -37,7 +37,7 @@ const AxisFormList: React.FC<AxisFormListProps> = ({
       {(fields, { add, remove }) => (
         <>
           {fields.map(routerItem => (
-            <Row style={{ width: '100%' }} key={routerItem.key}>
+            <Row style={{ width: '100%', color: '#000' }} key={routerItem.key}>
               <Item
                 style={{ width: '40%' }}
                 rules={[
